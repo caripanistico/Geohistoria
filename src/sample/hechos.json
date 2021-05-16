@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "title": "hecho 1",
+        "texto": "contenido historico relevante 1"
+    },
+    {
+        "id": 1,
+        "title": "hecho 2",
+        "texto": "contenido historico relevante 2"
+    },
+    {
+        "id": 2,
+        "title": "hecho 3",
+        "texto": "contenido historico relevante 3"
+    }
+]
