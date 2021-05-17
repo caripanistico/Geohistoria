@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import './App.css';
 
@@ -35,17 +35,30 @@ class App extends Component {
           return <div>
             <Mapa
               hecho={this.state.hecho}/>
-            <button onClick={this.ocultarHecho}>Agrandar mapa</button>
             <Botones
               hechos={this.state.hechos} 
               mostrarHecho={this.mostrarHecho}/>
-            <Info hecho={this.state.hecho}/>
             
             
           </div>
         }}>
 
         </Route>
+        <Route exact path="/hecho" render={() => {
+            
+            return <div>
+              <Link to="/">
+                <button type="button">
+                  Volver al Mapa
+                </button>
+              </Link>
+              <Info hecho={this.state.hecho}/>
+              
+              
+            </div>
+          }}>
+  
+          </Route>
       </Router>
       
     </div>
