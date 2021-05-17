@@ -15,5 +15,11 @@ def show_user(name):
     user = mongo.db.Files.find_one_or_404({"name": name})
     return render_template("index.html", name=user["name"], online=user["online"])
 
-## @app.route("/register/<name>")
-## def register_name(name):
+@app.route("/register/<name>", methods=['POST'])
+def register_user(name):
+    user = mongo.db.Files.insert_one(
+        {"name": name,
+         "online": False
+        }
+    )
+    return 'Recibido'
