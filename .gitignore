@@ -26,6 +26,8 @@ test.ts
 
 # python stuff
 __pycache__
+Pipfile
+Pipfile.lock
 
 # carpeta random
 /testing_stuff
