@@ -23,3 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 test.ts
 .vscode
+<<<<<<< HEAD
+=======
+
+# python stuff
+__pycache__
+>>>>>>> f5525225801a2eb687bbb0affd66c04c523ac688
