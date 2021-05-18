@@ -1,0 +1,93 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.cuerpo{
+    border: 1px solid black;
+}
+
+.cabecera{
+    border: 1px solid black;
+}
+
+.menu{
+    border: 1px solid black;
+}
+
+.boton{
+    background-color: grey;
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color: honeydew;
+    padding: 5px;
+}
+
+.boton:hover{
+    background-color: black;
+}
+
+.seccion{
+    border: 1px solid black;
+    float: left;
+    width: 60%;
+}
+
+.seccion h1{
+    text-align: right;
+    margin: 5px;
+}
+.seccion img{
+    height: 100%;
+    width: 100%;
+}
+
+.columna{
+    border: 1px solid black;
+    width: 39%;
+    float: left;
+}
+
+.columna h1{
+    font-size: 30px;
+    text-align: center;
+}
+
+.columna div{
+    padding: 10px;
+}
+
+.columna p{
+    text-align: justify;
+    font-size: 12px;
+}
+
+.pie{
+    border: 1px solid black;
+    clear: both;
+}
+
+
+/*Fotos
+https://www.mhnconcepcion.gob.cl/640/w3-article-53096.html?_noredirect=1*/
+
+
+/*CAROUSEL*/
+
+.carousel__lista{
+    padding: 15px;
+}
+
+.carousel__elemento img{
+    height: 35vh;
+    width: 35vw;
+}
+
+.seccion .selected {
+    height: 100%;
+    width: 100%;
+}
+
