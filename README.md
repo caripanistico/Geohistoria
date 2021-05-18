@@ -6,7 +6,7 @@
 
 	 $ ./run_all
 
-##### Si tienes Windows:
+##### Si tienes Windows: (Mentira, pa windows no funca, windows pesao)
 
 	1. Instalar Git : https://git-scm.com/downloads
 	
