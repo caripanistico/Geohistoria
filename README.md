@@ -1,12 +1,12 @@
 # GeoHistoria
 
-# Como correr el proyecto?
+## Como correr el proyecto?
 
-Si tienes Linux:
+##### Si tienes Linux:
 
 	 $ ./run_all
 
-Si tienes Windows:
+##### Si tienes Windows:
 
 	1. Instalar Git : https://git-scm.com/downloads
 	
