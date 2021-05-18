@@ -1,24 +1,35 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
+import '../estilosMapa.css';
+
 
 import PropTypes from 'prop-types';
 
 class Boton extends Component {
 
-    render(){
+  style(x, y){
 
-        const {hecho}= this.props;
-        return <div>
-            <Link to="/hecho">
-              <button type="button" onClick={this.props.mostrarHecho.bind(this, hecho)}>
-                {hecho.title}
-              </button>
-            </Link>
-            
-            
-          </div>
+    return {
+      left: x,
+      top: y
     }
+  }
+
+
+  render(){
+
+    const {hecho}= this.props;
+    return <div>
+      <Link to="/hecho">
+        <button type="button" class="botonm" style={this.style(this.props.hecho.x,this.props.hecho.y)} onClick={this.props.mostrarHecho.bind(this, hecho)}>
+          {hecho.title}
+        </button>
+      </Link>
+        
+        
+      </div>
+  }
 
 
 }

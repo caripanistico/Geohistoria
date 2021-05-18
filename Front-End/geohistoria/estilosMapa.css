@@ -41,6 +41,12 @@
     position: relative;
 }
 
+.seccion{
+    border: 1px solid black;
+    float: left;
+    width: 60%;
+}
+
 
 /*Diseños botones:
 http://www.w3bai.com/es/css/css3_buttons.html*/

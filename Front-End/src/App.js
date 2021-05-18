@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import './App.css';
+import './estilosMapa.css';
 
 import hechos from './sample/hechos.json';
 
 //Components:
 import Botones from './components/Botones';
-import Mapa from './components/Mapa';
+//import Mapa from './components/Mapa';
 import Info from './components/Info';
 
 class App extends Component {
@@ -31,8 +31,15 @@ class App extends Component {
       <Router>
 
         <Route exact path="/" render={() => {
+
+          return <div class="mapa">
+            <Botones
+              hechos={this.state.hechos} 
+              mostrarHecho={this.mostrarHecho}/>
             
-          return <div>
+          </div>
+            
+          /*return <div>
             <Mapa
               hecho={this.state.hecho}/>
             <Botones
@@ -40,19 +47,23 @@ class App extends Component {
               mostrarHecho={this.mostrarHecho}/>
             
             
-          </div>
+          </div>*/
         }}>
 
         </Route>
         <Route exact path="/hecho" render={() => {
             
             return <div>
-              <Link to="/">
-                <button type="button">
-                  Volver al Mapa
-                </button>
-              </Link>
-              <Info hecho={this.state.hecho}/>
+              <nav class="menu">
+                <Link to="/">
+                  <button type="button" class="botonv">
+                    Volver
+                  </button>
+                </Link>
+              </nav>
+              <section>
+                <Info hecho={this.state.hecho}/>
+              </section>
               
               
             </div>

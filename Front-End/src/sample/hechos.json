@@ -2,16 +2,58 @@
     {
         "id": 0,
         "title": "hecho 1",
-        "texto": "contenido historico relevante 1"
+        "texto": "contenido historico relevante 1",
+        "x": "300px",
+        "y": "430px",
+        "image1": "1",
+        "nimage1": "nombre imagen1",
+        "image2": "2",
+        "nimage2": "nombre imagen2",
+        "image3": "3",
+        "nimage3": "nombre imagen3",
+        "image4": "4",
+        "nimage4": "nombre imagen4",
+        "image5": "5",
+        "nimage5": "nombre imagen5",
+        "image6": "6",
+        "nimage6": "nombre imagen6"
     },
     {
         "id": 1,
         "title": "hecho 2",
-        "texto": "contenido historico relevante 2"
+        "texto": "contenido historico relevante 2",
+        "x": "100px",
+        "y": "100px",
+        "image1": "1",
+        "nimage1": "nombre imagen1",
+        "image2": "2",
+        "nimage2": "nombre imagen2",
+        "image3": "3",
+        "nimage3": "nombre imagen3",
+        "image4": "4",
+        "nimage4": "nombre imagen4",
+        "image5": "5",
+        "nimage5": "nombre imagen5",
+        "image6": "6",
+        "nimage6": "nombre imagen6"
     },
     {
         "id": 2,
         "title": "hecho 3",
-        "texto": "contenido historico relevante 3"
+        "texto": "contenido historico relevante 3",
+        "x": "200px",
+        "y": "200px",
+        "image1": "1",
+        "nimage1": "nombre imagen1",
+        "image2": "2",
+        "nimage2": "nombre imagen2",
+        "image3": "3",
+        "nimage3": "nombre imagen3",
+        "image4": "4",
+        "nimage4": "nombre imagen4",
+        "image5": "5",
+        "nimage5": "nombre imagen5",
+        "image6": "6",
+        "nimage6": "nombre imagen6"
     }
 ]
