@@ -51,7 +51,7 @@ class App extends Component {
         }}>
 
         </Route>
-        <Route exact path="/hecho" render={() => {
+          <Route exact path="/hecho" render={() => {
             
             return <div>
               <nav class="menu">
