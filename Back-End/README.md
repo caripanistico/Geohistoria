@@ -8,5 +8,7 @@ Para correr localmente, instalar MONGODB Community Server.
 # How to install and run back-end
 
 > pip install -r requirements.txt
+
 > export FLASK_APP="test"
+
 > flask run
