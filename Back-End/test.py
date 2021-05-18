@@ -35,3 +35,40 @@ def test():
         'id': 1,
         'name': 'Que se cho loco'
     }, 200
+
+db = mongo.db.puntos
+
+"""
+# Ingresa datos a la db. insert() retorna la id que mongo le asigna
+db.insert({
+    'name': 'Titulo Punto 3',
+    'x':'345',
+    'y':'345',
+    'img':'Ruta Imagen 3',
+    'info':'Texto Con Info 1'
+})
+"""
+
+@app.route('/puntos/', methods= ['GET'])
+def getPuntos():
+    puntos= []
+    for doc in db.find():
+        puntos.append({
+            '_id': str(ObjectId(doc['_id'])),
+            'name': doc['name'],
+            'x': doc['x'],
+            'y': doc['y']
+        })
+    return jsonify(puntos)
+
+
+@app.route('/puntos/<id>', methods=['GET'])
+def getPunto(id):
+  punto = db.find_one({'_id': ObjectId(id)})
+  print(punto)
+  return jsonify({
+      '_id': str(ObjectId(punto['_id'])),
+      'name': punto['name'],
+      'img': punto['img'],
+      'info': punto['info']
+  })
