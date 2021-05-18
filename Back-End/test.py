@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS
 from flask_pymongo import ObjectId, PyMongo
+#from bson import ObjectId
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/MyDatabase"
@@ -72,6 +73,3 @@ def getPunto(id):
       'img': punto['img'],
       'info': punto['info']
   })
-
-
-#Hola
