@@ -4,19 +4,31 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import './estilosMapa.css';
 
-import hechos from './sample/hechos.json';
+// import hechos from './sample/hechos.json';
 
 //Components:
 import Botones from './components/Botones';
 //import Mapa from './components/Mapa';
 import Info from './components/Info';
 
-class App extends Component {
+// importing axios
+const axios = require('axios').default;
 
-  state = {
-    hechos: hechos,
-    hecho:''
+const url_backend = 'http://localhost:5000'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      hechos: null,
+      hecho: ''
+    }
   }
+
+  // state = {
+  //   hechos: hechos,
+  //   hecho:''
+  // }
 
   mostrarHecho = hecho => {
     this.setState({hecho: hecho})
@@ -26,7 +38,23 @@ class App extends Component {
     this.setState({hecho: ''})
   }
 
+  // esta funcion se llama sola luego de que el componente se haya renderizado una vez
+  async componentDidMount() {
+    // Obtener los puntos
+    const response = await axios.get(url_backend.concat('/puntos?comuna=concepcion'))
+    this.setState({hechos: response.data})
+  }
+
   render() {
+    // esto evitar errores al renderizar sin datos. (Loading screen)
+    if(this.state.hechos == null){
+      return(
+        <div>
+          <h1> Cargando... </h1>
+        </div>
+      )
+    }
+
     return <div>
       <Router>
 
