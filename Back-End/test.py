@@ -4,19 +4,13 @@ from flask_pymongo import PyMongo
 from bson import ObjectId
 
 app = Flask(__name__)
+
 app.config["MONGO_URI"] = "mongodb://localhost:27017/MyDatabase"
 mongo = PyMongo(app)
+
 CORS(app)
 
-@app.route("/")
-def home_page():
-    return render_template("index.html", name=None)
-
-@app.route("/user/<name>")
-def show_user(name):
-    user = mongo.db.Files.find_one_or_404({"name": name})
-
-    return render_template("index.html", name=user["name"], online=user["online"])
+db = mongo.db.puntos
 
 @app.route("/register/<name>", methods=['POST'])
 def register_user(name):
@@ -26,29 +20,6 @@ def register_user(name):
         }
     )
     return 'Recibido'
-
-
-@app.route('/test')
-def test():
-    ''' test route '''
-
-    return {
-        'id': 1,
-        'name': 'Que se cho loco'
-    }, 200
-
-db = mongo.db.puntos
-
-"""
-# Ingresa datos a la db. insert() retorna la id que mongo le asigna
-db.insert({
-    'name': 'Titulo Punto 3',
-    'x':'345',
-    'y':'345',
-    'img':'Ruta Imagen 3',
-    'info':'Texto Con Info 1'
-})
-"""
 
 @app.route('/puntos/', methods= ['GET'])
 def getPuntos():
@@ -73,3 +44,20 @@ def getPunto(id):
       'img': punto['img'],
       'info': punto['info']
   })
+
+
+## testing end-points
+
+@app.route('/test')
+def test():
+    ''' test route '''
+
+    return {
+        'id': 1,
+        'name': 'Que se cho loco'
+    }, 200
+
+@app.route('/add_point', methods=['POST'])
+def add_point():
+  ''' add a point to online mongoDB cluster '''
+
