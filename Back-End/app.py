@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 from bson import ObjectId
 
@@ -22,8 +22,10 @@ def get_puntos():
             puntos.append({
                 '_id': str( ObjectId(punto['_id'])),
                 'title': punto['title'],
+                'texto': punto['texto'],
                 'x': punto['x'],
                 'y': punto['y'],
+                'imagenes': punto['imagenes']
             })
         except:
             pass
@@ -31,23 +33,13 @@ def get_puntos():
     return jsonify(puntos)
 
 
-@app.route('/puntos/data', methods=['GET'])
-def get_punto():
-    ''' Retorna la informacion del punto especifico de id = <id>, desde la db '''
+@app.route('/imagen')
+def get_imagen():
+    ''' Retorna una imagen '''
 
-    id_punto = request.args.get('id_punto')
+    filename = request.args.get('filename')
 
-    db = get_db()
-    punto = db.find_one({'_id': ObjectId(id_punto)})
-
-    return jsonify({
-        '_id': str(ObjectId(punto['_id'])),
-        'title': punto['title'],
-        'texto': punto['text'],
-        'x': punto['x'],
-        'y': punto['y']
-    })
-
+    return send_file(f"static/images/{filename}", mimetype='image/gif')
 
 
 ### === testing & development end-points === ###
@@ -73,3 +65,21 @@ def add_point():
     data['_id'] = str(data['_id'])
 
     return data, 200
+
+
+# @app.route('/puntos/data', methods=['GET'])
+# def get_punto():
+#     ''' Retorna la informacion del punto especifico de id = <id>, desde la db '''
+
+#     id_punto = request.args.get('id_punto')
+
+#     db = get_db()
+#     punto = db.find_one({'_id': ObjectId(id_punto)})
+
+#     return jsonify({
+#         '_id': str(ObjectId(punto['_id'])),
+#         'title': punto['title'],
+#         'texto': punto['text'],
+#         'x': punto['x'],
+#         'y': punto['y']
+#     })

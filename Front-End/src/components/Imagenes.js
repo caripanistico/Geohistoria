@@ -1,27 +1,43 @@
-import React, {useState} from "react";
-import Images from "./images";
+import React, { Component } from 'react';
+
+// import Images from "./images";
 import "./styles.css";
 
-export default function Imagenes() {
+// importing axios
+const axios = require('axios').default;
+const url_backend = 'http://localhost:5000/imagen'
 
-    const [selectedImg, setSelectedImg] = useState(Images[0]);
+export default class Imagenes extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectedImg: props.images[0],
+            images: props.images
+        }
+   }
 
-    return (
-        <div className="Imagenes">
-            <div className="container">
-                <img src={selectedImg} alt="Selected" className="selected" />
-                <div className="imgContainer">
-                    {Images.map((img, index) => (
-                        <img 
-                            style={{border: selectedImg === img ? "4px solid black" : ""}} 
-                            key={index} 
-                            src={img} 
-                            alt="imagen"
-                            onClick={() => setSelectedImg(img)}
-                        />
-                    ))}
+    setSelectedImg(img){
+        this.setState({selectedImg: img})
+    }
+
+    render(){
+        return (
+            <div className="Imagenes">
+                <div className="container">
+                    <img src={url_backend + '?filename=' + this.state.selectedImg} alt="Selected" className="selected" />
+                    <div className="imgContainer">
+                        { this.state.images.map((img, index) => (
+                           <img 
+                                style={{border: this.state.selectedImg === img ? "4px solid black" : ""}} 
+                                key={index} 
+                                src={url_backend + '?filename=' + img} // la source es el endpoint en el back-end!
+                                alt="imagen"
+                                onClick={() => this.setSelectedImg(img)}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }

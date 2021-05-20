@@ -7,11 +7,14 @@ import './estilosArchivo.css';
 
 export default class info extends Component {
 
-    
+    async componentDidMount() {
+
+    }
 
     render() {
 
         const {hecho}= this.props;
+        console.log(hecho)
 
         return (
             <div>
@@ -27,7 +30,7 @@ export default class info extends Component {
                 <section class="seccion">
                     <h1>{hecho.nimage1}</h1>
                 </section>
-                <Imagenes/>
+                <Imagenes images={hecho.imagenes}/>
                 {/*<section class="seccion">
                     <h1>{hecho.nimage1}</h1>
                     <img src={img1}/>
@@ -61,12 +64,8 @@ export default class info extends Component {
                     <h1>{hecho.title}</h1>
                     <div>
                         <p>{hecho.texto}</p>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio atque expedita nam ipsa eius asperiores cupiditate tenetur amet libero, architecto accusamus autem, fugit tempora exercitationem consequatur iure! Reiciendis expedita ducimus doloremque. Praesentium corrupti quidem distinctio asperiores id quasi quis? Magnam optio molestiae aliquid ipsa provident atque, odit blanditiis eius placeat dolores odio, minus sed architecto molestias deleniti et delectus! Placeat maxime, vitae deserunt dolore aspernatur ad modi molestiae consectetur, nesciunt impedit laudantium eius minima officia reiciendis quidem vero, officiis odio magni accusamus ipsam! Iure consequuntur maxime ipsam, voluptatibus error excepturi eius expedita omnis deserunt at illum fuga suscipit sapiente debitis!</p>
                     </div>
-                    <h1>Tags</h1>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, recusandae.</p>
-                    </div>
+{/*                    <h1>Tags</h1>*/}
                 </aside>
                 <footer class="pie">
                 </footer>
