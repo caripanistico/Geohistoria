@@ -5,18 +5,6 @@
     font-size: 15px;
 }
 
-.cuerpo{
-    border: 1px solid black;
-}
-
-.cabecera{
-    border: 1px solid black;
-}
-
-.menu{
-    border: 1px solid black;
-}
-
 .boton{
     background-color: grey;
     border: 1px solid black;
@@ -31,7 +19,6 @@
 }
 
 .seccion{
-    border: 1px solid black;
     float: left;
     width: 60%;
 }
@@ -46,7 +33,6 @@
 }
 
 .columna{
-    border: 1px solid black;
     width: 39%;
     float: left;
 }
@@ -66,7 +52,6 @@
 }
 
 .pie{
-    border: 1px solid black;
     clear: both;
 }
 
