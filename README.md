@@ -1,5 +1,7 @@
 # GeoHistoria
 
+Este repositorio contiene el code del proyecto semestral de la asignatura IS II (Semestre2021-1).
+
 ## Como correr el proyecto?
 
 ##### Si tienes Linux:
