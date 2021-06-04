@@ -5,6 +5,10 @@ import Boton from './Boton';
 import PropTypes from 'prop-types';
 
 class Botones extends Component {
+    constructor(props){
+        if(props!=null)
+            super(props)
+    }
     render(){			
         return this.props.hechos.map(e => 
             <Boton 
