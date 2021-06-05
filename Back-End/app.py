@@ -13,20 +13,22 @@ CORS(app)
 def get_puntos():
     ''' Retorna todos los puntos por comuna. Sus coordenadas '''
 
-    comuna = request.args.get('commune')
+    commune = request.args.get('commune')
     db = get_db()
 
     puntos = []
-    for punto in db.find({'comuna': comuna}):
+    for punto in db.find({'commune': commune}):
         try:
             puntos.append({
                 '_id': str( ObjectId(punto['_id'])),
                 'title': punto['title'],
                 'texto': punto['texto'],
+                'year': punto['year'],
                 'x': punto['x'],
                 'y': punto['y'],
                 'imagenes': punto['imagenes']
             })
+
         except:
             pass
 
