@@ -8,7 +8,7 @@ import './estilosMapa.css';
 
 //Components:
 import Botones from './components/Botones';
-//import Mapa from './components/Mapa';
+import Mapa from './components/Mapa';
 import Info from './components/Info';
 
 // importing axios
@@ -57,16 +57,20 @@ class App extends Component {
 
     return <div>
       <Router>
-
+      
         <Route exact path="/" render={() => {
 
-          return <div class="mapa">
+          return <Mapa hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
+          
+          </Mapa> 
+          
+          /*<div class="mapa">
             <Botones
               hechos={this.state.hechos} 
               mostrarHecho={this.mostrarHecho}/>
             
-          </div>
-            
+          </div>*/
+          
           /*return <div>
             <Mapa
               hecho={this.state.hecho}/>

@@ -22,7 +22,7 @@ class Boton extends Component {
     const {hecho}= this.props;
     return <div>
       <Link to="/hecho">
-        <button type="button" class="botonm" style={this.style(this.props.hecho.x,this.props.hecho.y)} onClick={this.props.mostrarHecho.bind(this, hecho)}>
+        <button type="button" class="botonm" style={this.style(0 ,0)} onClick={this.props.mostrarHecho.bind(this, hecho)}>
           {hecho.title}
         </button>
       </Link>
