@@ -13,16 +13,16 @@ import Botones from './Botones'
 }*/
 // export default class Mapa extends{}
 
-
 class Mapa extends Component {
+
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: -36.82688568888844,
+      lng: -73.05027428717374
     },
     zoom: 11
   };
-  
+
   render() {
     return (
       // Important! Always set the container height explicitly
@@ -32,12 +32,14 @@ class Mapa extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
+          {this.props.hechos.map(e=>
           <Botones
-            lat={59.955413}
-            lng={30.337844}
-            hechos = {this.props.hechos}
+            lat={e.x}
+            lng={e.y}
+            hecho = {e}
 						mostrarHecho= {this.props.mostrarHecho}
-          />
+          />)
+          }
         </GoogleMapReact>
       </div>
     );
