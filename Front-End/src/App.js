@@ -2,19 +2,16 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import './estilosMapa.css';
-
-// import hechos from './sample/hechos.json';
-
 //Components:
 import Botones from './components/Botones';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
+import Slider from './components/Slider';
 
 // importing axios
 const axios = require('axios').default;
-
 const url_backend = 'http://localhost:5000'
+
 
 class App extends Component {
   constructor(props) {
@@ -24,11 +21,6 @@ class App extends Component {
       hecho: ''
     }
   }
-
-  // state = {
-  //   hechos: hechos,
-  //   hecho:''
-  // }
 
   mostrarHecho = hecho => {
     this.setState({hecho: hecho})
@@ -60,9 +52,22 @@ class App extends Component {
       
         <Route exact path="/" render={() => {
 
-          return <Mapa hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
-          
-          </Mapa> 
+          return (
+                  <div id='container'>
+                    <div>
+                      <Slider id='slider'
+                        min={1500}
+                        max={2021}
+                        step={10}
+                        progress
+                      />
+                    </div>
+                    <div>
+                      <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
+                      </Mapa>
+                    </div>
+                  </div>
+          )
           
           /*<div class="mapa">
             <Botones

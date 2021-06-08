@@ -32,14 +32,14 @@
     border-radius: 50%;
 }
 
-.mapa{
+/*.mapa{
     background: url(./images/conce.jpg);   
     overflow: hidden;
     width: 100vw;
     height: 100vh;
     float: left;
     position: relative;
-}
+}*/
 
 .botonv{
     background-color: grey;
@@ -57,6 +57,17 @@
 .menu{
     border: 1px solid black;
 }
+
+#container {
+    position: relative;
+    width: 100%;
+
+}
+
+#slider {
+    z-index: 100;
+}
+
 
 
 /*Diseños botones:

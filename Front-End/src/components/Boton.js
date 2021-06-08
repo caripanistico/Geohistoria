@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-import '../estilosMapa.css';
+import './styles/home.css';
 
 
 import PropTypes from 'prop-types';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Imagenes from './Imagenes';
 
-import './estilosArchivo.css';
+import './styles/home.css';
 
 
 export default class info extends Component {
@@ -25,7 +25,7 @@ export default class info extends Component {
                     <title>Archivo</title>
                     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"/> 
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.css"/> 
-                    <link rel="stylesheet" href="estilosArchivo.css"/>
+                    <link rel="stylesheet" href="styles/home.css"/>
                 </head>
                 <section class="seccion">
                     <h1>{hecho.nimage1}</h1>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // import Images from "./images";
-import "./styles.css";
+import "./styles/hechos.css";
 
 // importing axios
 const axios = require('axios').default;
