@@ -41,7 +41,7 @@ class App extends Component {
   // esta funcion se llama sola luego de que el componente se haya renderizado una vez
   async componentDidMount() {
     // Obtener los puntos
-    const response = await axios.get(url_backend.concat('/puntos?comuna=concepcion'))
+    const response = await axios.get(url_backend.concat('/puntos?commune=concepcion'))
     this.setState({hechos: response.data})
   }
 
