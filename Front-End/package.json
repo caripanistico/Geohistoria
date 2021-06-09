@@ -9,10 +9,10 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "google-map-react": "^2.1.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "rsuite": "^4.10.2",
     "web-vitals": "^1.1.2"
   },
