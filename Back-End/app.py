@@ -69,6 +69,43 @@ def add_point():
     return data, 200
 
 
+# http://127.0.0.1:5000/date-range?commune=concepcion&date1=1900&date2=1930
+@app.route('/date-range', methods=['GET'])
+def in_range():
+    """Retorna los puntos por comuna, filtrados por el rango de fechas"""
+    
+    commune = request.args.get('commune')
+    date1 = int(request.args.get('date1'))
+    date2 = int(request.args.get('date2'))
+    db = get_db()
+    
+    # $gte : greater than or equal.  $lte: less than or equal.
+    filtered = db.find({ 
+        '$and':[
+            {'commune': commune },
+            {'year': {'$gte': date1}},
+            {'year': {'$lte': date2}}   
+        ]
+    })
+    
+    points = []
+    for point in filtered:
+        try:
+            points.append({
+                '_id': str( ObjectId(point['_id'])),
+                'title': point['title'],
+                'texto': point['texto'],
+                'year': point['year'],
+                'x': point['x'],
+                'y': point['y'],
+                'imagenes': point['imagenes']
+            })
+        except:
+            pass
+   
+    return jsonify(points)
+    
+    
 # @app.route('/puntos/data', methods=['GET'])
 # def get_punto():
 #     ''' Retorna la informacion del punto especifico de id = <id>, desde la db '''
