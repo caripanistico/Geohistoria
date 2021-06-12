@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 //Components:
-import Botones from './components/Botones';
-import Mapa from './components/Mapa';
-import Info from './components/Info';
+import Botones from '../../components/Botones';
+import Mapa from '../../components/Mapa';
+import Info from '../../components/Info';
+import RangeSlider from './components/RangeSlider';
+
 
 // importing axios
 const axios = require('axios').default;
@@ -53,30 +55,14 @@ class App extends Component {
           return (
                   <div id='container'>
                     <div>
-                    </div>
-                    <div>
                       <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
                       </Mapa>
                     </div>
+                    <div class="centered">
+                      <RangeSlider/>
+                    </div>
                   </div>
           )
-          
-          /*<div class="mapa">
-            <Botones
-              hechos={this.state.hechos} 
-              mostrarHecho={this.mostrarHecho}/>
-            
-          </div>*/
-          
-          /*return <div>
-            <Mapa
-              hecho={this.state.hecho}/>
-            <Botones
-              hechos={this.state.hechos} 
-              mostrarHecho={this.mostrarHecho}/>
-            
-            
-          </div>*/
         }}>
 
         </Route>

@@ -1,9 +1,25 @@
+/*Diseños botones:*/
+/*http://www.w3bai.com/es/css/css3_buttons.html*/
+
+/*Fotos
+https://www.mhnconcepcion.gob.cl/640/w3-article-53096.html?_noredirect=1*/
+
+
+/*ESTILO GENERAL*/
 *{
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
 }
 
+/*CLASES SIN OBJETO ESPECIFICO*/
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*PAG HECHOS*/
 .Imagenes{
     float: left;
     width: 60%;
@@ -40,26 +56,6 @@ img{
     height: 100px;
     margin: 5px 0;
 
-}
-
-*{
-    margin: 0%;
-    padding: 0%;
-    font-family: monospace;
-    font-size: 15px;
-}
-
-.boton{
-    background-color: grey;
-    border: 1px solid black;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    color: honeydew;
-    padding: 5px;
-}
-
-.boton:hover{
-    background-color: black;
 }
 
 .seccion{
@@ -99,13 +95,7 @@ img{
     clear: both;
 }
 
-
-/*Fotos
-https://www.mhnconcepcion.gob.cl/640/w3-article-53096.html?_noredirect=1*/
-
-
 /*CAROUSEL*/
-
 .carousel__lista{
     padding: 15px;
 }
@@ -120,3 +110,42 @@ https://www.mhnconcepcion.gob.cl/640/w3-article-53096.html?_noredirect=1*/
     width: 100%;
 }
 
+/*BOTON EN MAPA*/
+.botonm{
+    background-color: #112529;
+    width: 30px;
+    height: 30px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 50%;
+    border: 3px solid  #112529;
+    position: absolute;
+
+    /*Desplazamiento*/
+    /*left: 300px;
+    top: 430px;*/
+}
+
+.botonm:hover{
+    background-color: #30B35C;
+    border-radius: 50%;
+}
+
+/*BOTON VOLVER*/
+.botonv{
+    background-color: grey;
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color: honeydew;
+    padding: 5px;
+}
+
+.botonv:hover{
+    background-color: black;
+}
+
+/*HECHOS NAV BAR*/
+.menu{
+    border: 1px solid black;
+}
