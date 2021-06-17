@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Botones from './components/Botones';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
+import DateRangeFilter from './components/DateRangeFilter';
 
 // importing axios
 const axios = require('axios').default;
@@ -27,6 +28,12 @@ class App extends Component {
   ocultarHecho = () => {
     this.setState({hecho: ''})
   }
+  
+  onChange = ranges => {
+    // ranges ...
+    alert("changed check the console log");
+    console.log(ranges);
+  };
 
   // esta funcion se llama sola luego de que el componente se haya renderizado una vez
   async componentDidMount() {
@@ -53,6 +60,7 @@ class App extends Component {
           return (
                   <div id='container'>
                     <div>
+                      <DateRangeFilter onChange={this.onChange}></DateRangeFilter>
                     </div>
                     <div>
                       <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
