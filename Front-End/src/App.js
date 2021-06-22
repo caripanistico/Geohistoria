@@ -20,7 +20,11 @@ class App extends Component {
     super(props)
     this.state = {
       hechos: null,
-      hecho: ''
+      hecho: '',
+      // estos parametros sirven para que al volver desde un hecho al mapa,
+      // el mapa siga como estaba antes
+      date1: 1900, // valor inicial
+      date2: 2000 // valor inicial
     }
   }
 
@@ -31,18 +35,47 @@ class App extends Component {
   ocultarHecho = () => {
     this.setState({hecho: ''})
   }
+
+
+  // consulta al back-end por los puntos y actualiza this.state
+  obtener_puntos = async (commune, date1, date2) => {
+
+    const params = {
+      commune: commune,
+      date1: date1,
+      date2: date2
+    }
+
+    // Obtener puntos en el rango
+    const response = await axios.get(url_backend.concat('/date-range'), { params: params });
+
+    // Cargar nuevos puntos
+    this.setState({hechos: response.data});
+  }
   
-  onChange = ranges => {
-    // ranges ...
-    alert("changed check the console log");
-    console.log(ranges);
-  };
+  onChange_Dates = async (ranges) => {
+    this.setState({
+      date1: ranges.startDate.getFullYear(),
+      date2: ranges.endDate.getFullYear()
+    });
+
+    try{
+      await this.obtener_puntos('concepcion', this.state.date1, this.state.date2)
+
+    }catch(error){
+      alert("No se encuentran hechos durante estas fechas :(. Prueba con otras!")
+    }
+  }
 
   // esta funcion se llama sola luego de que el componente se haya renderizado una vez
   async componentDidMount() {
     // Obtener los puntos
-    const response = await axios.get(url_backend.concat('/puntos?commune=concepcion'))
-    this.setState({hechos: response.data})
+    try{
+      await this.obtener_puntos('concepcion', this.state.date1, this.state.date2)
+
+    }catch(error){
+      console.log(error)
+    }
   }
 
   render() {
@@ -62,7 +95,7 @@ class App extends Component {
           return (
                   <div id='container'>
                     <div>
-                      <DateRangeFilter onChange={this.onChange}></DateRangeFilter>
+                      <DateRangeFilter onChange={this.onChange_Dates}></DateRangeFilter>
                     </div>
                     <div>
                       <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
