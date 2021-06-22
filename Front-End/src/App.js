@@ -49,23 +49,24 @@ class App extends Component {
     // Obtener puntos en el rango
     const response = await axios.get(url_backend.concat('/date-range'), { params: params });
 
-    // Cargar nuevos puntos
-    this.setState({hechos: response.data});
+    // Cargar nuevos puntos y fechas
+    this.setState({
+      hechos: response.data,
+      date1: date1,
+      date2: date2
+    });
   }
   
   onChange_Dates = async (ranges) => {
-    this.setState({
-      date1: ranges.startDate.getFullYear(),
-      date2: ranges.endDate.getFullYear()
-    });
 
     try{
-      await this.obtener_puntos('concepcion', this.state.date1, this.state.date2)
+      await this.obtener_puntos('concepcion', ranges.startDate.getFullYear(), ranges.endDate.getFullYear())
 
     }catch(error){
-      alert("No se encuentran hechos durante estas fechas :(. Prueba con otras!")
+      alert("back-end no responde !!") //dev
     }
   }
+
 
   // esta funcion se llama sola luego de que el componente se haya renderizado una vez
   async componentDidMount() {
