@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import Imagenes from './Imagenes';
 
-import './styles/home.css'
-import './styles/hechos.css'
-
-
 export default class info extends Component {
 
     async componentDidMount() {

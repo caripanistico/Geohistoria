@@ -30,6 +30,10 @@ class App extends Component {
     this.setState({hecho: ''})
   }
 
+  updateHechos = hechos => {
+    this.setState({hechos: hechos})
+  }
+
   // esta funcion se llama sola luego de que el componente se haya renderizado una vez
   async componentDidMount() {
     // Obtener los puntos
@@ -55,11 +59,11 @@ class App extends Component {
           return (
                   <div id='container'>
                     <div>
-                      <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
+                      <Mapa id='google_map' hechos={this.state.hechos} mostrarHecho={this.mostrarHecho}>
                       </Mapa>
                     </div>
                     <div class="centered">
-                      <RangeSlider/>
+                      <RangeSlider updateHechos={this.updateHechos}/>
                     </div>
                   </div>
           )

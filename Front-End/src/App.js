@@ -7,6 +7,9 @@ import Mapa from './components/Mapa';
 import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
 
+// import de estilos, EL UNICO!!
+import './components/styles/styles.css'
+
 // importing axios
 const axios = require('axios').default;
 const url_backend = 'http://localhost:5000'
@@ -56,7 +59,6 @@ class App extends Component {
       <Router>
       
         <Route exact path="/" render={() => {
-
           return (
                   <div id='container'>
                     <div>
@@ -68,28 +70,10 @@ class App extends Component {
                     </div>
                   </div>
           )
-          
-          /*<div class="mapa">
-            <Botones
-              hechos={this.state.hechos} 
-              mostrarHecho={this.mostrarHecho}/>
-            
-          </div>*/
-          
-          /*return <div>
-            <Mapa
-              hecho={this.state.hecho}/>
-            <Botones
-              hechos={this.state.hechos} 
-              mostrarHecho={this.mostrarHecho}/>
-            
-            
-          </div>*/
         }}>
 
         </Route>
           <Route exact path="/hecho" render={() => {
-            
             return <div>
               <nav class="menu">
                 <Link to="/">
@@ -101,8 +85,6 @@ class App extends Component {
               <section>
                 <Info hecho={this.state.hecho}/>
               </section>
-              
-              
             </div>
           }}>
   
