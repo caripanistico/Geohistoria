@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file

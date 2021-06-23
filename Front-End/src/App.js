@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 //Components:
-import Botones from './components/Botones';
+//import Botones from './components/Botones';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
 
 // import de estilos, EL UNICO!!
 import './components/styles/styles.css'
+import Navbar from './components/Navbar';
 
 // importing axios
 const axios = require('axios').default;
@@ -24,8 +25,17 @@ class App extends Component {
       // estos parametros sirven para que al volver desde un hecho al mapa,
       // el mapa siga como estaba antes
       date1: 1900, // valor inicial
-      date2: 2000 // valor inicial
+      date2: 2000, // valor inicial
+      center: {
+        lat: -36.82688568888844,
+        lng: -73.05027428717374
     }
+  }
+  }
+
+  handlerClick = (lat, lng) =>{
+    this.setState({center: {lat, lng}})
+    console.log(this.state.center)
   }
 
   mostrarHecho = hecho => {
@@ -95,13 +105,11 @@ class App extends Component {
         <Route exact path="/" render={() => {
           return (
                   <div id='container'>
+                    <div><Navbar clickHandler={this.handlerClick}></Navbar></div>
                     <div>
                       <DateRangeFilter onChange={this.onChange_Dates}></DateRangeFilter>
                     </div>
-                    <div>
-                      <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
-                      </Mapa>
-                    </div>
+                      <Mapa id='map' hechos={this.state.hechos} mostrarHecho={this.mostrarHecho} center={this.state.center}></Mapa>
                   </div>
           )
         }}>
