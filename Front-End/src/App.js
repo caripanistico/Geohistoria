@@ -6,19 +6,30 @@ import Botones from './components/Botones';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
+import {Search} from './components/Barrita';
+import Navbar from './components/Navbar';
 
 // importing axios
 const axios = require('axios').default;
 const url_backend = 'http://localhost:5000'
-
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       hechos: null,
-      hecho: ''
+      hecho: '',
+      lat: -36.8260421,
+      lng: -73.0330456
     }
+  }
+  
+  setLat = lat => {
+    this.setState({lat:lat})
+  }
+
+  setLng = lng => {
+    this.setState({lng:lng})
   }
 
   mostrarHecho = hecho => {
@@ -59,13 +70,9 @@ class App extends Component {
 
           return (
                   <div id='container'>
-                    <div>
-                      <DateRangeFilter onChange={this.onChange}></DateRangeFilter>
-                    </div>
-                    <div>
-                      <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho}>
-                      </Mapa>
-                    </div>
+                    <div><Navbar setLat={this.setLat} setLng={this.setLng}></Navbar></div>
+                    <div><DateRangeFilter onChange={this.onChange}></DateRangeFilter></div>
+                    <div><Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho} lat={this.state.lat} lng={this.state.lng}></Mapa></div>
                   </div>
           )
           
