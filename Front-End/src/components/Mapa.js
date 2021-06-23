@@ -1,17 +1,6 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
 import Botones from './Botones'
-//import mapa from '../images/mapa.png'
-
-/*export default class Mapa extends Component {
-
-    render() {
-        return(
-	        <img src={mapa} alt="description"/>
-        )
-    }
-}*/
-// export default class Mapa extends{}
 
 class Mapa extends Component {
 

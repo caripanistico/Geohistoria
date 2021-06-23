@@ -47,6 +47,7 @@ export const MenuItems = [
         cName: 'nav-links',
         lat: '-36.9759',
         lng: '-72.9384'
+
     },
     {
         title: 'Santa Juana',

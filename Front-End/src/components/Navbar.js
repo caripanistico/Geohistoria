@@ -1,4 +1,3 @@
-import { formatRFC3339WithOptions } from 'date-fns/fp';
 import React, {Component} from 'react';
 import {MenuItems} from "./MenuItems"
 import'./Navbar.css'
