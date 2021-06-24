@@ -12,8 +12,8 @@ import { useState } from 'react';
 const DateRangeFilter = ({ onChange }) => {
     const [state, setState] = useState([
       {
-        startDate: subDays(new Date(), 7),
-        endDate: addDays(new Date(), 1),
+        startDate: new Date(1900,0,1),
+        endDate: new Date(2000,11,31),
         key: "selection"
       }
     ]);
@@ -32,6 +32,8 @@ const DateRangeFilter = ({ onChange }) => {
         months={2}
         ranges={state}
         direction="horizontal"
+        minDate={new Date(1800, 0, 1)}
+        maxDate={new Date(2040, 11, 31)}
       />
     );
   };
