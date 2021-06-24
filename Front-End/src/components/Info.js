@@ -58,7 +58,7 @@ export default class info extends Component {
                 
                 </section>*/}
                 <aside class="columna">
-                    <h1>{hecho.title}</h1>
+                    <h1 id={'title'} >{hecho.title}</h1>
                     <div>
                         <p>{hecho.texto}</p>
                     </div>

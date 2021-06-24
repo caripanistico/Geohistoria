@@ -82,6 +82,11 @@ class App extends Component {
 
   // esta funcion se llama sola luego de que el componente se haya renderizado una vez
   async componentDidMount() {
+
+    // change document title
+    document.title = "GeoHistoria";
+
+
     // Obtener los puntos
     try{
       await this.obtener_puntos('concepcion', this.state.date1, this.state.date2)
