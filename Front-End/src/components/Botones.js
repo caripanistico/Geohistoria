@@ -18,8 +18,8 @@ class Botones extends Component {
     }
 }
 
-Botones.propTypes = {
+/*Botones.propTypes = {
     //botones: PropTypes.array.isRequired
-}
+}*/
 
 export default Botones;

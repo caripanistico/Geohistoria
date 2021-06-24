@@ -124,7 +124,7 @@ class App extends Component {
             return <div>
               <nav class="menu">
                 <Link to="/">
-                  <button type="button" class="botonv">
+                  <button type="button" className="botonv">
                     Volver
                   </button>
                 </Link>
