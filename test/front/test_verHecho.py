@@ -30,7 +30,7 @@ class VerHechoArboCampeon(unittest.TestCase):
         title = self.driver.find_element_by_id('title')
 
         assert title is not None
-
+        print('Hecho encontrado!')
 
     def tearDown(self):
         self.driver.close()

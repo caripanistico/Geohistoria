@@ -32,3 +32,6 @@ Pipfile.lock
 
 # carpeta random
 /testing_stuff
+
+#logs
+*.log
