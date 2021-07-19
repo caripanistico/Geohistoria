@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {MenuItems} from "./MenuItems"
 import'./Navbar.css'
+import {Link} from "react-router-dom";
 
 class Navbar extends Component{
     state ={clicked:false}
@@ -32,6 +33,11 @@ class Navbar extends Component{
                         )
                     })} 
                 </ul>
+                <Link to="/ingreso">
+                    <button type="button" className="botoni">
+                        Ingresar hecho
+                    </button>
+                </Link>
             </nav>
         )
     }

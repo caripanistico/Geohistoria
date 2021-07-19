@@ -8,6 +8,7 @@ import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
 import {Search} from './components/Barrita';
 import Navbar from './components/Navbar';
+import Ingreso from './components/Ingreso';
 
 // import de estilos, EL UNICO!!
 import './components/styles/styles.css'
@@ -118,24 +119,31 @@ class App extends Component {
                   </div>
           )
         }}>
-
         </Route>
-          <Route exact path="/hecho" render={() => {
-            return <div>
-              <nav class="menu">
-                <Link to="/">
-                  <button type="button" className="botonv">
-                    Volver
-                  </button>
-                </Link>
-              </nav>
-              <section>
-                <Info hecho={this.state.hecho}/>
-              </section>
-            </div>
-          }}>
-  
-          </Route>
+
+        <Route exact path="/hecho" render={() => {
+          return <div>
+            <nav class="menu">
+              <Link to="/">
+                <button type="button" className="botonv">
+                  Volver
+                </button>
+              </Link>
+            </nav>
+            <section>
+              <Info hecho={this.state.hecho}/>
+            </section>
+          </div>
+        }}>
+        </Route>
+
+        <Route exact path="/ingreso" render={() => {
+          return <div>
+            <Ingreso></Ingreso>
+          </div>
+        }}>
+        </Route>
+
       </Router>
       
     </div>
