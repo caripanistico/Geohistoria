@@ -3,7 +3,7 @@
 echo "(1) installing back-end..."
 
 cd ./Back-End
-python3 -m pip install -r requirements.txt
+# python3 -m pip install -r requirements.txt
 
 echo "(2) starting back-end..."
 

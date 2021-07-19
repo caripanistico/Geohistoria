@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Imagenes from './Imagenes';
-
-import './styles/home.css';
-
 
 export default class info extends Component {
 
@@ -17,16 +14,17 @@ export default class info extends Component {
         console.log(hecho)
 
         return (
+            <Fragment>
+            <head>
+                <meta charSet="UTF-8"/>
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>Archivo</title>
+                <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"/> 
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.css"/> 
+                <link rel="stylesheet" href="styles/home.css"/>
+            </head>
             <div>
-                <head>
-                    <meta charset="UTF-8"/>
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                    <title>Archivo</title>
-                    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"/> 
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.css"/> 
-                    <link rel="stylesheet" href="styles/home.css"/>
-                </head>
                 <section class="seccion">
                     <h1>{hecho.nimage1}</h1>
                 </section>
@@ -61,7 +59,7 @@ export default class info extends Component {
                 
                 </section>*/}
                 <aside class="columna">
-                    <h1>{hecho.title}</h1>
+                    <h1 id={'title'} >{hecho.title}</h1>
                     <div>
                         <p>{hecho.texto}</p>
                     </div>
@@ -69,10 +67,11 @@ export default class info extends Component {
                 </aside>
                 <footer class="pie">
                 </footer>
-                <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+                <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossOrigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.js"></script> 
                 <script src="app.js"></script>
             </div>
+        </Fragment>
         )
     }
 }

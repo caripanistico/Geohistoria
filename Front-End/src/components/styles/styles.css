@@ -1,0 +1,189 @@
+/*Diseños botones:*/
+/*http://www.w3bai.com/es/css/css3_buttons.html*/
+
+/*Fotos
+https://www.mhnconcepcion.gob.cl/640/w3-article-53096.html?_noredirect=1*/
+
+
+/*ESTILO GENERAL*/
+*{
+    box-sizing: border-box;
+    margin: 10;
+    padding: 10;
+}
+
+/*CLASES SIN OBJETO ESPECIFICO*/
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*PAG HECHOS*/
+.Imagenes{
+    float: left;
+    width: 60%;
+}
+
+img{
+    display: block;
+    cursor: pointer;
+}
+
+.container{
+    margin: auto;
+    width: 100%;
+    max-width: 540px;
+}
+
+.container .selected{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    border: 4px solid black;
+}
+
+.container .imgContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px 0 0 0;
+}
+
+.container .imgContainer img {
+    width: 100px;
+    height: 100px;
+    margin: 5px 0;
+
+}
+
+.seccion{
+    float: left;
+    width: 60%;
+}
+
+.seccion h1{
+    text-align: right;
+    margin: 5px;
+}
+.seccion img{
+    height: 100%;
+    width: 100%;
+}
+
+.columna{
+    width: 39%;
+    float: left;
+}
+
+.columna h1{
+    font-size: 30px;
+    text-align: center;
+}
+
+.columna div{
+    padding: 10px;
+}
+
+.columna p{
+    text-align: justify;
+    font-size: 12px;
+}
+
+.pie{
+    clear: both;
+}
+
+/*CAROUSEL*/
+.carousel__lista{
+    padding: 15px;
+}
+
+.carousel__elemento img{
+    height: 35vh;
+    width: 35vw;
+}
+
+.seccion .selected {
+    height: 100%;
+    width: 100%;
+}
+
+/*BOTON EN MAPA*/
+.botonm{
+    background-color: #112529;
+    width: 30px;
+    height: 30px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 50%;
+    border: 3px solid  #112529;
+    position: absolute;
+
+    /*Desplazamiento*/
+    /*left: 300px;
+    top: 430px;*/
+}
+
+.botonm:hover{
+    background-color: #30B35C;
+    border-radius: 50%;
+}
+
+.botonm:hover .tooltiptext{
+    visibility: visible;
+}
+
+.botonm .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.botonm .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+/*BOTON VOLVER*/
+.botonv{
+    background-color: grey;
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color: honeydew;
+    padding: 5px;
+}
+
+.botonv:hover{
+    background-color: black;
+}
+
+/*HECHOS NAV BAR*/
+.menu{
+    border: 1px solid black;
+}
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}

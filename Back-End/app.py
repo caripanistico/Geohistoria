@@ -122,3 +122,9 @@ def in_range():
 #         'x': punto['x'],
 #         'y': punto['y']
 #     })
+@app.route('/commune', methods=['GET'])
+def cuantas_comunas():
+    """Retorna la cantidad de comunas que hay, para su uso en el filtro de comunas"""
+    db = get_db()
+    commune = db.distinct('commune')
+    return jsonify(commune)
