@@ -27,6 +27,7 @@ class Mapa extends Component {
         >
           {this.props.hechos.map(e=>
           <Botones
+            id={e._id}
             lat={e.x}
             lng={e.y}
             hecho = {e}
