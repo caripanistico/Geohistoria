@@ -139,7 +139,7 @@ class App extends Component {
 
         <Route exact path="/ingreso" render={() => {
           return <div>
-            <Ingreso></Ingreso>
+            <Ingreso lat={this.state.lat} lng={this.state.lng}></Ingreso>
           </div>
         }}>
         </Route>
