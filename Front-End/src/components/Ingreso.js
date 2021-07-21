@@ -11,7 +11,7 @@ const getFormJSON = (form) => {
 };
 
 class Ingreso extends Component {
-
+  pin;
   constructor(props) {
     super(props)
     this.state = {
@@ -20,7 +20,6 @@ class Ingreso extends Component {
     };
     this.handleChange = this.handleChange.bind(this)
   }
-
     handleSubmit(evt){
       console.log(evt);
       evt.preventDefault();
@@ -28,15 +27,28 @@ class Ingreso extends Component {
       console.log(aux);
 
     }
-    handleClick(evt){
-      var lat = evt.lat, lng = evt.lng;
-      this.setLat(lat);
-      this.setLng(lng);
+    handleClick(evt, map, maps){
+      console.log(typeof(this.pin));
+      var lat = evt.latLng.lat(), lng = evt.latLng.lng();
       console.log({lat, lng});
       console.log(this.state.lat,this.state.lng);
+      this.setLat(lat);
+      this.setLng(lng);
+      if(!this.pin){
+        let marker = new maps.Marker({
+          position: evt.latLng,
+          map,
+        });
+        this.pin = marker;
+      }
+      else{
+        this.pin.setPosition(evt.latLng)
+      }
     }
 
-    
+    handleLoaded(map, maps){
+      map.addListener('click', (e)=>this.handleClick(e, map, maps), false);
+    }
     
     setLat = (lat) => {
       this.setState({lat: lat})
@@ -45,6 +57,7 @@ class Ingreso extends Component {
     setLng = (lng) => {
       this.setState({lng: lng})
     }
+
 
     handleChange(event) {
       if(event.target.id === "formLat"){
@@ -89,6 +102,8 @@ class Ingreso extends Component {
             <GoogleMapReact
               //bootstrapURLKeys={{ key: null }}
               //defaultCenter={this.props.center}
+              yesIWantToUseGoogleMapApiInternals
+              onGoogleApiLoaded={({map, maps})=>this.handleLoaded(map, maps)}
               center={
                 {
                   lat:Number(this.state.lat), 
@@ -96,7 +111,7 @@ class Ingreso extends Component {
                 }
               }
               zoom={11}
-            onClick={(e)=>this.handleClick(e)}
+            //onClick={(event)=>this.handleClick(event)}
         />
           </div>
         </div>
