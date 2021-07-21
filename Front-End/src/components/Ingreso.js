@@ -26,52 +26,11 @@ class Ingreso extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-    handleSubmit(evt){
-      console.log(evt);
-      evt.preventDefault();
-      const aux = getFormJSON(evt.target);
-      console.log(aux);
-
-    }
-    handleClick(evt, map, maps){
-      console.log(typeof(this.pin));
-      var lat = evt.latLng.lat(), lng = evt.latLng.lng();
-      console.log({lat, lng});
-      console.log(this.state.lat,this.state.lng);
-      this.setLat(lat);
-      this.setLng(lng);
-      if(!this.pin){
-        let marker = new maps.Marker({
-          position: evt.latLng,
-          map,
-        });
-        this.pin = marker;
-      }
-      else{
-        this.pin.setPosition(evt.latLng)
-      }
-    }
 
     handleLoaded(map, maps){
       map.addListener('click', (e)=>this.handleClick(e, map, maps), false);
     }
     
-    setLat = (lat) => {
-      this.setState({lat: lat})
-    }
-  
-    setLng = (lng) => {
-      this.setState({lng: lng})
-    }
-
-
-    handleChange(event) {
-      if(event.target.id === "formLat"){
-        this.setLat(Number(event.target.value));
-      }
-      if(event.target.id === "formLng")
-        this.setLng(Number(event.target.value));
-    } 
   // usada para hacer submit de la form
   async handleSubmit(evt){
     evt.preventDefault();
@@ -113,12 +72,23 @@ class Ingreso extends Component {
   }
 
   // usada en mapa
-  handleClick(evt){
-    var lat = evt.lat, lng = evt.lng;
-    this.setLat(lat);
-    this.setLng(lng);
+  handleClick(evt, map, maps){
+    console.log(typeof(this.pin));
+    var lat = evt.latLng.lat(), lng = evt.latLng.lng();
     console.log({lat, lng});
     console.log(this.state.lat,this.state.lng);
+    this.setLat(lat);
+    this.setLng(lng);
+    if(!this.pin){
+      let marker = new maps.Marker({
+        position: evt.latLng,
+        map,
+      });
+      this.pin = marker;
+    }
+    else{
+      this.pin.setPosition(evt.latLng)
+    }
   }
 
   // usada para almacenar cambios del input en state --> refleja cambios en el mapa
@@ -166,7 +136,9 @@ class Ingreso extends Component {
             <div style={{ height: '40vh', width: '98%' }}>
               <GoogleMapReact
                 //bootstrapURLKeys={{ key: null }}
-                //defaultCenter={this.props.center}
+               //defaultCenter={this.props.center}
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({map, maps})=>this.handleLoaded(map, maps)}
                 center={
                   {
                     lat:Number(this.state.lat), 
@@ -174,8 +146,9 @@ class Ingreso extends Component {
                   }
                 }
                 zoom={11}
-              onClick={(e)=>this.handleClick(e)}
-            /></div>
+        //onClick={(event)=>this.handleClick(event)}
+              />
+            </div>
             <div className="LatLong">
               <p>
                 <label className="label" for="lat">Latitud:</label>
@@ -202,25 +175,8 @@ class Ingreso extends Component {
             </p>
           </aside>
         </form>     
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          //bootstrapURLKeys={{ key: null }}
-          //defaultCenter={this.props.center}
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({map, maps})=>this.handleLoaded(map, maps)}
-          center={
-            {
-              lat:Number(this.state.lat), 
-              lng:Number(this.state.lng)
-            }
-          }
-          zoom={11}
-        //onClick={(event)=>this.handleClick(event)}
-    />
-      </div>
     </Fragment>
   );
-
-}  
+  }  
 }
 export default Ingreso;
