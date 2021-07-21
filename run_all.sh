@@ -8,6 +8,7 @@ cd ./Back-End
 echo "(2) starting back-end..."
 
 export FLASK_APP="app"
+export FLASK_DEBUG="1"
 gnome-terminal -- python3 -m flask run --host=0.0.0.0
 
 echo "(3) installing front-end"
