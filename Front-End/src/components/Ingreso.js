@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import FormData from 'form-data';
 import GoogleMapReact from 'google-map-react';
 
@@ -104,61 +104,60 @@ class Ingreso extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <form onSubmit={this.handleSubmit}>
-          <p>
-            <label for="first_name">First Name:</label>
-            <input type="text" name="first_name" id="fname" onChange={this.handleChange}></input>
-          </p>
-          <p>
-            <label for="last_name">Last Name:</label>
-            <input type="text" name="last_name" id="lname" onChange={this.handleChange}></input>
-          </p>
-          <p>
-            <label for="lat">Latitude:</label>
-            <input type="text" name="lat" id="formLat" value={this.state.lat} onChange={this.handleChange}></input>
-          </p>
-          <p>
-            <label for="lng">Longitude:</label>
-            <input type="text" name="lng" id="formLng" value={this.state.lng} onChange={this.handleChange}></input>
-          </p>
+          <header className="header">
+            <h1>FORMULARIO DE COLABORACIÓN</h1>
+          </header>
+    
+          <section className="seccion">
 
-          {/*IMAGENES*/}
-          <p>
-            <label for="imagenes">Imagenes: </label>
-            <input type="file" name="imagenes" id="imagenes" multiple/>
-          </p>
+            {/*IMAGENES*/}
+            <p>
+              <label className="label" for="imagenes">Imagenes: </label>
+              <input className="input" type="file" name="imagenes" id="imagenes" multiple/>
+            </p>
+
+            <div style={{ height: '40vh', width: '98%' }}>
+              <GoogleMapReact
+                //bootstrapURLKeys={{ key: null }}
+                //defaultCenter={this.props.center}
+                center={
+                  {
+                    lat:Number(this.state.lat), 
+                    lng:Number(this.state.lng)
+                  }
+                }
+                zoom={11}
+              onClick={(e)=>this.handleClick(e)}
+            /></div>
+            <div className="LatLong">
+              <p>
+                <label className="label" for="lat">Latitud:</label>
+                <input className="input" type="text" name="lat" id="formLat" value={this.state.lat} onChange={this.handleChange}></input>
+              </p>
+              <p>
+                <label className="label" for="lng">Longitud:</label>
+                <input className="input" type="text" name="lng" id="formLng" value={this.state.lng} onChange={this.handleChange}></input>
+              </p>
+            </div>
 
 
-
-          <input value="Submit" type="submit"></input>
+          </section>
+          
+          <aside className="columna">
+            <input value="Submit" type="submit"></input>
+            <p>
+              <label className="label" for="title">Título:</label>
+              <input className="input" type="text" name="title" id="title" onChange={this.handleChange}></input>
+            </p>
+            <p>
+              <label className="label" for="description">Descripción:</label>
+              <textarea className="textarea" type="text" name="description" id="description" onChange={this.handleChange}></textarea>
+            </p>
+          </aside>
         </form>
-
-
-
-
-
-
-
-
-
-
-
-        <div style={{ height: '50vh', width: '50vw' }}>
-          <GoogleMapReact
-            //bootstrapURLKeys={{ key: null }}
-            //defaultCenter={this.props.center}
-            center={
-              {
-                lat:Number(this.state.lat), 
-                lng:Number(this.state.lng)
-              }
-            }
-            zoom={11}
-          onClick={(e)=>this.handleClick(e)}
-      />
-        </div>
-      </div>
+      </Fragment>
       
     );
   }  

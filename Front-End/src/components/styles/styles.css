@@ -211,3 +211,56 @@ img{
 	position:relative;
 	top:1px;
 }
+
+.form{
+    text-align: justify;
+    font-size: 12px;  
+}
+
+.seccion h5{
+    text-align: justify;
+    font-size: 15px;  
+    margin: 1px;
+}
+
+.input{
+    height: 15px;
+    font-size: 15px;
+    outline: none;
+    width: 90%;
+    height: 30px;
+    /*border-style: groove;
+    border-color: grey;*/
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.label{
+    margin: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+
+.textarea{
+    height: 15px;
+    font-size: 14px;
+    outline: none;
+    height: 120px;
+    width: 90%;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    resize: vertical;
+/*    border-style: groove;
+    border-color: grey;*/
+}
+
+.header h1{
+    text-align: center;
+}
+
+.LatLong{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 2px;
+    list-style: none;
+}
