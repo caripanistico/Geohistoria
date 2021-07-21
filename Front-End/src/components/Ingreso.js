@@ -29,6 +29,7 @@ class Ingreso extends Component {
 
     handleLoaded(map, maps){
       map.addListener('click', (e)=>this.handleClick(e, map, maps), false);
+      //map.addListener('dragend', ()=>{console.log(this.pin)}, false);
     }
     
   // usada para hacer submit de la form
@@ -73,17 +74,20 @@ class Ingreso extends Component {
 
   // usada en mapa
   handleClick(evt, map, maps){
-    console.log(typeof(this.pin));
+    //console.log(typeof(this.pin));
     var lat = evt.latLng.lat(), lng = evt.latLng.lng();
-    console.log({lat, lng});
-    console.log(this.state.lat,this.state.lng);
+    //console.log({lat, lng});
+    //console.log(this.state.lat,this.state.lng);
     this.setLat(lat);
     this.setLng(lng);
+    
     if(!this.pin){
       let marker = new maps.Marker({
         position: evt.latLng,
         map,
+        title: "Click to remove"
       });
+      marker.addListener('click', ()=>{marker.setMap(null); this.pin = undefined;}, false)
       this.pin = marker;
     }
     else{
