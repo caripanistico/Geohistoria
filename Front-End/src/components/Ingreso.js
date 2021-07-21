@@ -15,7 +15,7 @@ const url_backend = 'http://localhost:5000/'
 // };
 
 class Ingreso extends Component {
-
+  pin;
   constructor(props) {
     super(props)
     this.state = {
@@ -26,7 +26,52 @@ class Ingreso extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+    handleSubmit(evt){
+      console.log(evt);
+      evt.preventDefault();
+      const aux = getFormJSON(evt.target);
+      console.log(aux);
 
+    }
+    handleClick(evt, map, maps){
+      console.log(typeof(this.pin));
+      var lat = evt.latLng.lat(), lng = evt.latLng.lng();
+      console.log({lat, lng});
+      console.log(this.state.lat,this.state.lng);
+      this.setLat(lat);
+      this.setLng(lng);
+      if(!this.pin){
+        let marker = new maps.Marker({
+          position: evt.latLng,
+          map,
+        });
+        this.pin = marker;
+      }
+      else{
+        this.pin.setPosition(evt.latLng)
+      }
+    }
+
+    handleLoaded(map, maps){
+      map.addListener('click', (e)=>this.handleClick(e, map, maps), false);
+    }
+    
+    setLat = (lat) => {
+      this.setState({lat: lat})
+    }
+  
+    setLng = (lng) => {
+      this.setState({lng: lng})
+    }
+
+
+    handleChange(event) {
+      if(event.target.id === "formLat"){
+        this.setLat(Number(event.target.value));
+      }
+      if(event.target.id === "formLng")
+        this.setLng(Number(event.target.value));
+    } 
   // usada para hacer submit de la form
   async handleSubmit(evt){
     evt.preventDefault();
@@ -156,11 +201,26 @@ class Ingreso extends Component {
               <textarea className="textarea" type="text" name="description" id="description" onChange={this.handleChange}></textarea>
             </p>
           </aside>
-        </form>
-      </Fragment>
-      
-    );
-  }  
-}
+        </form>     
+      <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMapReact
+          //bootstrapURLKeys={{ key: null }}
+          //defaultCenter={this.props.center}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({map, maps})=>this.handleLoaded(map, maps)}
+          center={
+            {
+              lat:Number(this.state.lat), 
+              lng:Number(this.state.lng)
+            }
+          }
+          zoom={11}
+        //onClick={(event)=>this.handleClick(event)}
+    />
+      </div>
+    </Fragment>
+  );
 
+}  
+}
 export default Ingreso;
