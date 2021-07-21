@@ -75,20 +75,42 @@ def get_puntos():
 @app.route('/add-point', methods=['POST'])
 def add_point():
     ''' add a point to online mongoDB cluster '''
-
-    ## *** FALTA SEGUIR DESARROLLANDO ESTO *** ##
-
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
-
+        
+    # Receiving data
+    title = request.form['title']
+    texto = request.form['texto']
+    year = int(request.form['year'])
+    x = int(request.form['lat'])
+    y = int(request.form['lgn'])
+    imagenes = request.form['imagenes']
 
     point = {
-        'first_name': first_name,
-        'last_name': last_name
+        'title': title,
+        'texto': texto,
+        'year': year,
+        'x': x,
+        'y': y,
+        'imagenes': imagenes
     }
-
     print(point)
 
+    db = get_db()
+    
+    # All data is required
+    if title and texto and year and x and y and imagenes:
+        db.insert_one(point)
+        response = jsonify({
+            'message' : 'Punto creado exitosamente!'
+        })
+        response.status_code = 200
+        return response
+    
+    else:
+        response = jsonify({
+            'message' : 'Error: Todos los campos son requeridos'
+        })
+        response.status_code = 400
+        return response
     # db = get_db()
     # db.insert_one(data) # ojo: este insert modifica el objeto "data"
 
@@ -96,8 +118,6 @@ def add_point():
     # data['_id'] = str(data['_id'])
 
     # return data, 200
-
-    return 'holi', 200
 
 @app.route('/commune', methods=['GET'])
 def cuantas_comunas():
