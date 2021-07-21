@@ -113,9 +113,9 @@ class App extends Component {
         <Route exact path="/" render={() => {
           return (
                   <div id='container'>
-                    <div><Navbar setLat={this.setLat} setLng={this.setLng}></Navbar></div>
-                    <div><DateRangeFilter onChange={this.onChange_Dates}></DateRangeFilter></div>
-                    <div><Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho} lat={this.state.lat} lng={this.state.lng}></Mapa></div>
+                    <Navbar setLat={this.setLat} setLng={this.setLng} />
+                    <DateRangeFilter onChange={this.onChange_Dates} />
+                    <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho} lat={this.state.lat} lng={this.state.lng} />
                   </div>
           )
         }}>
@@ -138,10 +138,11 @@ class App extends Component {
         </Route>
 
         <Route exact path="/ingreso" render={() => {
-          return <div>
+          return(
             <Ingreso lat={this.state.lat} lng={this.state.lng}></Ingreso>
-          </div>
+          );
         }}>
+
         </Route>
 
       </Router>
