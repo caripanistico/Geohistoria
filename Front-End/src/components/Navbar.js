@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {MenuItems} from "./MenuItems"
 import'./Navbar.css'
 import {Link} from "react-router-dom";
+import './styles/styles.css'
 
 class Navbar extends Component{
     state ={clicked:false}

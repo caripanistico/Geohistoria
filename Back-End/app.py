@@ -9,67 +9,7 @@ from db import get_db # esto debe ir aqui, para evitar un import circular
 # necesario por politicas de navegadores!
 CORS(app)
 
-@app.route('/puntos', methods= ['GET'])
-def get_puntos():
-    ''' Retorna todos los puntos por comuna. Sus coordenadas '''
-
-    commune = request.args.get('commune')
-    db = get_db()
-
-    puntos = []
-    for punto in db.find({'commune': commune}):
-        try:
-            puntos.append({
-                '_id': str( ObjectId(punto['_id'])),
-                'title': punto['title'],
-                'texto': punto['texto'],
-                'year': punto['year'],
-                'x': punto['x'],
-                'y': punto['y'],
-                'imagenes': punto['imagenes']
-            })
-
-        except:
-            pass
-
-    return jsonify(puntos)
-
-
-@app.route('/imagen')
-def get_imagen():
-    ''' Retorna una imagen '''
-
-    filename = request.args.get('filename')
-
-    return send_file(f"static/images/{filename}", mimetype='image/gif')
-
-
-### === testing & development end-points === ###
-
-@app.route('/test')
-def test():
-    ''' test route '''
-
-    return {
-        'id': 1,
-        'name': 'Que se cho loco'
-    }, 200
-
-@app.route('/add_point', methods=['POST'])
-def add_point():
-    ''' add a point to online mongoDB cluster '''
-
-    db = get_db()
-    data = request.json
-    db.insert_one(data) # ojo: este insert modifica el objeto "data"
-
-    # cambia la clase a str para que pueda ser enviado por json
-    data['_id'] = str(data['_id'])
-
-    return data, 200
-
-
-# http://127.0.0.1:5000/date-range?commune=concepcion&date1=1900&date2=1930
+# Example: http://127.0.0.1:5000/date-range?commune=concepcion&date1=1900&date2=1930
 @app.route('/date-range', methods=['GET'])
 def in_range():
     """Retorna los puntos por comuna, filtrados por el rango de fechas"""
@@ -104,8 +44,121 @@ def in_range():
             pass
    
     return jsonify(points)
+
+
+@app.route('/puntos', methods= ['GET'])
+def get_puntos():
+    ''' Retorna todos los puntos por comuna. Sus coordenadas '''
+
+    commune = request.args.get('commune')
+    db = get_db()
+
+    puntos = []
+    for punto in db.find({'commune': commune}):
+        try:
+            puntos.append({
+                '_id': str( ObjectId(punto['_id'])),
+                'title': punto['title'],
+                'texto': punto['texto'],
+                'year': punto['year'],
+                'x': punto['x'],
+                'y': punto['y'],
+                'imagenes': punto['imagenes']
+            })
+
+        except:
+            pass
+
+    return jsonify(puntos)
+
+
+@app.route('/add-point', methods=['POST'])
+def add_point():
+    ''' add a point to online mongoDB cluster '''
+        
+    # Receiving data
+    title = request.form['title']
+    texto = request.form['texto']
+    year = int(request.form['year'])
+    x = int(request.form['lat'])
+    y = int(request.form['lgn'])
+    imagenes = request.form['imagenes']
+
+    point = {
+        'title': title,
+        'texto': texto,
+        'year': year,
+        'x': x,
+        'y': y,
+        'imagenes': imagenes
+    }
+    print(point)
+
+    db = get_db()
     
+    # All data is required
+    if title and texto and year and x and y and imagenes:
+        db.insert_one(point)
+        response = jsonify({
+            'message' : 'Punto creado exitosamente!'
+        })
+        response.status_code = 200
+        return response
     
+    else:
+        response = jsonify({
+            'message' : 'Error: Todos los campos son requeridos'
+        })
+        response.status_code = 400
+        return response
+    # db = get_db()
+    # db.insert_one(data) # ojo: este insert modifica el objeto "data"
+
+    # # cambia la clase a str para que pueda ser enviado por json
+    # data['_id'] = str(data['_id'])
+
+    # return data, 200
+
+@app.route('/commune', methods=['GET'])
+def cuantas_comunas():
+    """Retorna la cantidad de comunas que hay, para su uso en el filtro de comunas"""
+    db = get_db()
+    commune = db.distinct('commune')
+    return jsonify(commune)
+
+
+@app.route('/imagen')
+def get_imagen():
+    ''' Retorna una imagen '''
+
+    filename = request.args.get('filename')
+
+    return send_file(f"static/images/{filename}", mimetype='image/gif')
+
+
+@app.route('/add-image', methods=['POST'])
+def add_image():
+    ''' guarda imagenes de un punto '''
+
+    if len(request.files) == 0:
+        return 'There is no images!', 400
+
+    img_names = []
+    for img in request.files.values():
+        img.save(f'./static/images/{img.filename}')
+        img_names.append(img.filename)
+
+    return { 'imagenes': img_names }
+
+
+
+
+
+
+
+
+### === testing & development end-points === ###
+
 # @app.route('/puntos/data', methods=['GET'])
 # def get_punto():
 #     ''' Retorna la informacion del punto especifico de id = <id>, desde la db '''
@@ -122,9 +175,3 @@ def in_range():
 #         'x': punto['x'],
 #         'y': punto['y']
 #     })
-@app.route('/commune', methods=['GET'])
-def cuantas_comunas():
-    """Retorna la cantidad de comunas que hay, para su uso en el filtro de comunas"""
-    db = get_db()
-    commune = db.distinct('commune')
-    return jsonify(commune)
