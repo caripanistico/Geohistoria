@@ -79,9 +79,8 @@ def add_point():
     # Receiving data
     title = request.form['title']
     texto = request.form['description']
-    # year = int(request.form['year'])
-    year = 2000
-    commune = 'concepcion'
+    commune = request.form['commune']
+    year = int(request.form['year'])
     x = float(request.form['lat'])
     y = float(request.form['lng'])
 

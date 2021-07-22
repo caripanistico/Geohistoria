@@ -176,9 +176,9 @@ img{
 }
 
 /*HECHOS NAV BAR*/
-.menu{
+/*.menu{
     border: 1px solid black;
-}
+}*/
 
 .tooltip {
     position: relative;
@@ -231,7 +231,7 @@ img{
     height: 30px;
     /*border-style: groove;
     border-color: grey;*/
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     margin-left: 20px;
 }
 
@@ -247,7 +247,7 @@ img{
     outline: none;
     height: 120px;
     width: 90%;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     margin-left: 20px;
     resize: vertical;
 /*    border-style: groove;
@@ -263,4 +263,27 @@ img{
     grid-template-columns: repeat(2, auto);
     grid-gap: 2px;
     list-style: none;
+}
+
+.error{
+    font-size: 12px;
+    color: red;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.botonSubmit{
+    background-color: rgb(18, 99, 95);
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color: honeydew;
+    padding: 5px;
+    padding-left: 18%;
+    padding-right: 18%;
+}
+
+.botonSubmit:hover{
+    background-color: rgb(13, 228, 121);
+    color: black;
 }

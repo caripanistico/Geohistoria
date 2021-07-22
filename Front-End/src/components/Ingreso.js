@@ -1,10 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import FormData from 'form-data';
 import GoogleMapReact from 'google-map-react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+
 
 const axios = require('axios').default;
 const url_backend = 'http://localhost:5000/'
 
+//restablecer error
+const initialState ={
+  titleError: "",
+  descriptionError: "",
+  yearError: "",
+  communeError: ""
+}
 
 // const getFormJSON = (form) => {
 //   const data = new FormData(form);
@@ -20,7 +29,11 @@ class Ingreso extends Component {
     super(props)
     this.state = {
       lat: -36.8260421,
-      lng: -73.0330456
+      lng: -73.0330456,
+      titleError: "",
+      descriptionError: "",
+      yearError: "",
+      communeError: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,10 +45,39 @@ class Ingreso extends Component {
       //map.addListener('dragend', ()=>{console.log(this.pin)}, false);
     }
     
+
+    validate = () =>{
+      let titleError = "";
+      let descriptionError = "";
+      let yearError = "";
+      let communeError = "";
+
+      if(!this.state.title){titleError='title is empty';}
+      if(!this.state.description){descriptionError='description is empty';}
+      if(!this.state.year){yearError='year is empty';} 
+      if(this.state.year>2021 || this.state.year<0){yearError='invalid year';}      
+      if(!this.state.commune){communeError='commune is empty';}      
+      if(titleError || descriptionError || yearError || communeError){
+        this.setState({titleError});
+        this.setState({descriptionError});
+        this.setState({yearError});
+        this.setState({communeError});
+        return false;
+      }
+      return true;
+    }
+
+
   // usada para hacer submit de la form
   async handleSubmit(evt){
     evt.preventDefault();
 
+    //***validar input */
+    const isValid = this.validate();
+    if(isValid){
+      this.setState(initialState);
+    }
+    
     console.log(this.state);
 
     // *** construir formdata para imagenes
@@ -168,15 +210,43 @@ class Ingreso extends Component {
           </section>
           
           <aside className="columna">
-            <input value="Submit" type="submit"></input>
+            <div className="LatLong">
+              <Route exact path="/ingreso" render={() => {
+                return <div>
+                    <Link to="/">
+                      <button type="button" className="botonv">
+                        Volver
+                      </button>
+                    </Link>
+                    <input className="botonSubmit" value="Submit" type="submit"></input>
+                </div>
+              }}></Route>
+            </div>
+            
             <p>
               <label className="label" for="title">Título:</label>
               <input className="input" type="text" name="title" id="title" onChange={this.handleChange}></input>
+              <div className="error"> {this.state.titleError}</div>
             </p>
             <p>
               <label className="label" for="description">Descripción:</label>
               <textarea className="textarea" type="text" name="description" id="description" onChange={this.handleChange}></textarea>
+              <div className="error"> {this.state.descriptionError}</div>
+
             </p>
+            <div className="LatLong">
+              <p>
+                <label className="label" for="year">Año:</label>
+                <input className="input" type="text" name="year" id="year" onChange={this.handleChange}></input>
+                <div className="error"> {this.state.yearError}</div>
+              </p>
+              <p>
+                <label className="label" for="commune">Comuna:</label>
+                <input className="input" type="text" name="commune" id="commune" onChange={this.handleChange}></input>
+                <div className="error"> {this.state.communeError}</div>
+              </p>
+            </div>
+            
           </aside>
         </form>     
     </Fragment>
