@@ -29,7 +29,7 @@ test.ts
 __pycache__
 Pipfile
 Pipfile.lock
-static/images
+Back-End/static/images
 
 # carpeta random
 /testing_stuff
