@@ -38,6 +38,7 @@ class Ingreso extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
     handleLoaded(map, maps){
@@ -138,17 +139,31 @@ class Ingreso extends Component {
   }
 
   // usada para almacenar cambios del input en state --> refleja cambios en el mapa
+  // ignora input si esta vacio
+  // los inputs se copian al state una vez que el input pierde el focus (onBlur)
   handleChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+    const conv = Number(value);
+    if(value === "") return;
 
-    if(name === "lat") this.setLat(Number(value));
-    else if (name === "lng") this.setLng(Number(value));
+    if(name === "lat"){
+      if(!isNaN(conv) && conv !== this.state.lat ){
+        this.setLat(conv)
+      }
+    }
+    else if (name === "lng"){
+      if(!isNaN(conv) && conv !== this.state.lng ) {
+        this.setLng(conv);
+      }
+    }
     else this.setState({[name]: value});
-
     // console.log(this.state)
-  }
+    if(target.name === "lat" || target.name === "lng")
+      target.value = "";
+    //console.log("state updated!")
+}
 
   setLat = (lat) => {
     this.setState({lat: lat})
@@ -158,6 +173,12 @@ class Ingreso extends Component {
     this.setState({lng: lng})
   }
 
+// en caso de querer editar la lat o lng, se copia el que esta en el state al input
+handleEdit(evt){
+  if(evt.target.name === "lat")
+    evt.target.value = this.state.lat;
+  else evt.target.value = this.state.lng;
+}
 
   componentDidMount(){
     //
@@ -198,11 +219,11 @@ class Ingreso extends Component {
             <div className="LatLong">
               <p>
                 <label className="label" for="lat">Latitud:</label>
-                <input className="input" type="text" name="lat" id="formLat" value={this.state.lat} onChange={this.handleChange}></input>
+                <input className="input" type="text" name="lat" id="formLat" autocomplete="off" placeholder={this.state.lat} onClick={this.handleEdit} onBlur={this.handleChange}></input>
               </p>
               <p>
                 <label className="label" for="lng">Longitud:</label>
-                <input className="input" type="text" name="lng" id="formLng" value={this.state.lng} onChange={this.handleChange}></input>
+                <input className="input" type="text" name="lng" id="formLng" autocomplete="off" placeholder={this.state.lng} onClick={this.handleEdit} onBlur={this.handleChange}></input>
               </p>
             </div>
 
@@ -225,24 +246,24 @@ class Ingreso extends Component {
             
             <p>
               <label className="label" for="title">Título:</label>
-              <input className="input" type="text" name="title" id="title" onChange={this.handleChange}></input>
+              <input className="input" type="text" name="title" id="title" onBlur={this.handleChange}></input>
               <div className="error"> {this.state.titleError}</div>
             </p>
             <p>
               <label className="label" for="description">Descripción:</label>
-              <textarea className="textarea" type="text" name="description" id="description" onChange={this.handleChange}></textarea>
+              <textarea className="textarea" type="text" name="description" id="description" onBlur={this.handleChange}></textarea>
               <div className="error"> {this.state.descriptionError}</div>
 
             </p>
             <div className="LatLong">
               <p>
                 <label className="label" for="year">Año:</label>
-                <input className="input" type="text" name="year" id="year" onChange={this.handleChange}></input>
+                <input className="input" type="text" name="year" id="year" onBlur={this.handleChange}></input>
                 <div className="error"> {this.state.yearError}</div>
               </p>
               <p>
                 <label className="label" for="commune">Comuna:</label>
-                <input className="input" type="text" name="commune" id="commune" onChange={this.handleChange}></input>
+                <input className="input" type="text" name="commune" id="commune" onBlur={this.handleChange}></input>
                 <div className="error"> {this.state.communeError}</div>
               </p>
             </div>
