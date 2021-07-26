@@ -59,7 +59,10 @@ class Ingreso extends Component {
 
       if(!this.state.title){titleError='Este campo es obligatorio.';}
       if(!this.state.description){descriptionError='Este campo es obligatorio.';}
-      if(!this.state.year){yearError='Este campo es obligatorio.';} 
+      if(!this.state.year){yearError='Este campo es obligatorio.';
+      }else{
+        if(!Number(this.state.year)){yearError='Ingrese un número válido.';}
+      } 
       if(this.state.year>2021 || this.state.year<0){yearError='Año inválido.';}      
       if(!this.state.commune){communeError='Este campo es obligatorio.';}      
       if(!this.hayfotos){imagenError='Este campo es obligatorio.';}
@@ -203,7 +206,7 @@ handleEdit(evt){
       <Fragment>
         <form onSubmit={this.handleSubmit}>
           <header className="header">
-            <h1>FORMULARIO DE COLABORACIÓN</h1>
+            <h1 style={{color:'rgb(44, 40, 40)'}}>FORMULARIO DE COLABORACIÓN</h1>
           </header>
     
           <section className="seccion2">
