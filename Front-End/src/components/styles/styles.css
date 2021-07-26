@@ -245,11 +245,11 @@ img{
     height: 15px;
     font-size: 14px;
     outline: none;
-    height: 120px;
+    height: 197px;
     width: 90%;
     margin-bottom: 0px;
     margin-left: 20px;
-    resize: vertical;
+    resize: none;
 /*    border-style: groove;
     border-color: grey;*/
 }
@@ -261,15 +261,14 @@ img{
 .LatLong{
     display: grid;
     grid-template-columns: repeat(2, auto);
-    grid-gap: 2px;
+    grid-gap: 1px;
     list-style: none;
 }
 
 .error{
     font-size: 12px;
     color: red;
-    margin-left: 10px;
-    margin-top: -10px;
+    margin-left: 20px;
 }
 
 .botonSubmit{
@@ -279,11 +278,49 @@ img{
     transition-duration: 0.4s;
     color: honeydew;
     padding: 5px;
-    padding-left: 18%;
-    padding-right: 18%;
+    padding-inline: 9%;
+    text-align: center;
+    position: fixed;
 }
 
 .botonSubmit:hover{
     background-color: rgb(13, 228, 121);
     color: black;
+}
+
+.seccion2{
+    float: left;
+    width: 60%;
+    padding: 10px;
+}
+
+.columna2{
+    width: 39%;
+    float: left;
+    padding: 10px;
+}
+
+/*BOTON VOLVER 2*/
+.botonv2{
+    background-color: grey;
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color: honeydew;
+    padding: 5px;
+    padding-inline: 5%;
+
+}
+
+.botonv2:hover{
+    background-color: rgb(44, 40, 40);
+}
+
+.aviso{
+    font-size: 12px;
+    text-align: justify;
+    margin-top: -15px;
+    padding-left: 20px;
+    color: rgb(35, 48, 47);
+    width: 98%;
 }

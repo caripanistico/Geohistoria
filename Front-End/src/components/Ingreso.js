@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import FormData from 'form-data';
 import GoogleMapReact from 'google-map-react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
+import swal from 'sweetalert';
 
 const axios = require('axios').default;
 const url_backend = 'http://localhost:5000/'
@@ -12,7 +12,9 @@ const initialState ={
   titleError: "",
   descriptionError: "",
   yearError: "",
-  communeError: ""
+  communeError: "",
+  imagenError: "",
+  hayfotos: false
 }
 
 // const getFormJSON = (form) => {
@@ -33,7 +35,8 @@ class Ingreso extends Component {
       titleError: "",
       descriptionError: "",
       yearError: "",
-      communeError: ""
+      communeError: "",
+      imagenError: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -52,18 +55,24 @@ class Ingreso extends Component {
       let descriptionError = "";
       let yearError = "";
       let communeError = "";
+      let imagenError = "";
 
-      if(!this.state.title){titleError='title is empty';}
-      if(!this.state.description){descriptionError='description is empty';}
-      if(!this.state.year){yearError='year is empty';} 
-      if(this.state.year>2021 || this.state.year<0){yearError='invalid year';}      
-      if(!this.state.commune){communeError='commune is empty';}      
-      if(titleError || descriptionError || yearError || communeError){
+      if(!this.state.title){titleError='Este campo es obligatorio.';}
+      if(!this.state.description){descriptionError='Este campo es obligatorio.';}
+      if(!this.state.year){yearError='Este campo es obligatorio.';} 
+      if(this.state.year>2021 || this.state.year<0){yearError='Año inválido.';}      
+      if(!this.state.commune){communeError='Este campo es obligatorio.';}      
+      if(!this.hayfotos){imagenError='Este campo es obligatorio.';}
+      if(titleError || descriptionError || yearError || communeError || imagenError){
         this.setState({titleError});
         this.setState({descriptionError});
         this.setState({yearError});
         this.setState({communeError});
+        this.setState({imagenError});
         return false;
+      }
+      if(this.state.title && this.state.description && this.state.year && this.state.commune && this.hayfotos){
+        swal("Hecho publicado correctamente");
       }
       return true;
     }
@@ -91,6 +100,11 @@ class Ingreso extends Component {
       const aux = img.slice(0, img.size, 'image/png');
       const new_img_name = Date.now() + Math.random().toString(20).substr(2, 6) + '.' + file_extension
       const new_img = new File([aux], new_img_name, {type: 'image/png'})
+      
+      //error de foto
+      this.hayfotos = true;
+      let imagenError = "";
+      this.setState({imagenError});
 
       console.log(new_img_name, new_img)
       imagenes_data.append(new_img_name, new_img)
@@ -192,15 +206,16 @@ handleEdit(evt){
             <h1>FORMULARIO DE COLABORACIÓN</h1>
           </header>
     
-          <section className="seccion">
+          <section className="seccion2">
 
             {/*IMAGENES*/}
             <p>
               <label className="label" for="imagenes">Imagenes: </label>
               <input className="input" type="file" name="imagenes" id="imagenes" multiple/>
+              <div style={{marginLeft:'20px'}} className="error"> {this.state.imagenError}</div>
             </p>
 
-            <div style={{ height: '40vh', width: '98%' }}>
+            <div style={{ height: '40vh', width: '98%', marginLeft:'10px' }}>
               <GoogleMapReact
                 //bootstrapURLKeys={{ key: null }}
                //defaultCenter={this.props.center}
@@ -226,16 +241,17 @@ handleEdit(evt){
                 <input className="input" type="text" name="lng" id="formLng" autocomplete="off" placeholder={this.state.lng} onClick={this.handleEdit} onBlur={this.handleChange}></input>
               </p>
             </div>
+            <p className="aviso">Procura seleccionar una ubicación en el mapa. de lo contrario el hecho estará por defecto en el centro de Concepción.</p>
 
 
           </section>
           
-          <aside className="columna">
-            <div className="LatLong">
+          <aside className="columna2">
+            <div className="LatLong" style={{marginLeft:'-40px', textAlign:'center'}}>
               <Route exact path="/ingreso" render={() => {
                 return <div>
                     <Link to="/">
-                      <button type="button" className="botonv">
+                      <button type="button" className="botonv2">
                         Volver
                       </button>
                     </Link>
@@ -255,7 +271,7 @@ handleEdit(evt){
               <div className="error"> {this.state.descriptionError}</div>
 
             </p>
-            <div className="LatLong">
+            <div className="LatLong" style={{width:'95%'}}>
               <p>
                 <label className="label" for="year">Año:</label>
                 <input className="input" type="text" name="year" id="year" onBlur={this.handleChange}></input>
