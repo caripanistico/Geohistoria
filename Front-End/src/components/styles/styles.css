@@ -233,12 +233,15 @@ img{
     border-color: grey;*/
     margin-bottom: 0px;
     margin-left: 20px;
+    border: 1px groove #0e1030;
+    color: #0e1030;
 }
 
 .label{
     margin: 10px;
-    color: rgb(0, 0, 0);
-    font-size: 15px;
+    color: #0e1030;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .textarea{
@@ -250,6 +253,8 @@ img{
     margin-bottom: 0px;
     margin-left: 20px;
     resize: none;
+    border: 1px groove #0e1030;
+    color: #0e1030;
 /*    border-style: groove;
     border-color: grey;*/
 }
@@ -272,8 +277,8 @@ img{
 }
 
 .botonSubmit{
-    background-color: rgb(18, 99, 95);
-    border: 1px solid black;
+    background-color: #0e1030;
+    border: 2px solid #0e1030;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     color: honeydew;
@@ -281,39 +286,52 @@ img{
     padding-inline: 9%;
     text-align: center;
     position: fixed;
+    margin-left: 2px;
+    font-weight: bold;
+
+    
 }
 
 .botonSubmit:hover{
-    background-color: rgb(13, 228, 121);
-    color: black;
+    background-color: #000ba8;
+    color: white;
+    border: 2px solid #000ba8;
 }
 
 .seccion2{
     float: left;
-    width: 60%;
+    width: 58%;
     padding: 10px;
+    background-color: #6d76f7;
+    height: 520px;
+    margin-right: 3px;
+    margin-left: 10px;
 }
 
 .columna2{
     width: 39%;
     float: left;
     padding: 10px;
+    background-color: #6d76f7;
+    height: 520px;
 }
 
 /*BOTON VOLVER 2*/
 .botonv2{
-    background-color: grey;
-    border: 1px solid black;
+    background-color: #0e1030;
+    border: 2px solid #0e1030;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    color: honeydew;
+    color: white;
     padding: 5px;
     padding-inline: 5%;
-
+    font-weight: bold;
 }
 
 .botonv2:hover{
-    background-color: rgb(44, 40, 40);
+    background-color: #4d0033;
+    color: white;
+    border: 2px solid #4d0033;
 }
 
 .aviso{
@@ -321,6 +339,15 @@ img{
     text-align: justify;
     margin-top: -15px;
     padding-left: 20px;
-    color: rgb(35, 48, 47);
+    color: #4d0033;
+    font-weight: bold;
     width: 98%;
+}
+
+.fondoo{
+    background-color: #313357;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: -10px;
 }

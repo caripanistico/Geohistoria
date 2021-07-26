@@ -203,10 +203,11 @@ handleEdit(evt){
 
   render() {
     return (
+      <div className='fondoo'>
       <Fragment>
         <form onSubmit={this.handleSubmit}>
           <header className="header">
-            <h1 style={{color:'rgb(44, 40, 40)'}}>FORMULARIO DE COLABORACIÓN</h1>
+            <h1 style={{color:'white'}}>FORMULARIO DE COLABORACIÓN</h1>
           </header>
     
           <section className="seccion2">
@@ -214,7 +215,7 @@ handleEdit(evt){
             {/*IMAGENES*/}
             <p>
               <label className="label" for="imagenes">Imagenes: </label>
-              <input className="input" type="file" name="imagenes" id="imagenes" multiple/>
+              <input style={{border:'none'}} className="input" type="file" name="imagenes" id="imagenes" multiple/>
               <div style={{marginLeft:'20px'}} className="error"> {this.state.imagenError}</div>
             </p>
 
@@ -290,6 +291,7 @@ handleEdit(evt){
           </aside>
         </form>     
     </Fragment>
+    </div>
   );
   }  
 }
