@@ -163,7 +163,7 @@ class Ingreso extends Component {
     const value = target.value;
     const name = target.name;
     const conv = Number(value);
-    if(value === "") return;
+    if(value === "" && (name==="lat" || name ==="lng")) return;
 
     if(name === "lat"){
       if(!isNaN(conv) && conv !== this.state.lat ){
@@ -203,10 +203,11 @@ handleEdit(evt){
 
   render() {
     return (
+      <div className='fondoo'>
       <Fragment>
         <form onSubmit={this.handleSubmit}>
           <header className="header">
-            <h1 style={{color:'rgb(44, 40, 40)'}}>FORMULARIO DE COLABORACIÓN</h1>
+            <h1 style={{color:'white'}}>FORMULARIO DE COLABORACIÓN</h1>
           </header>
     
           <section className="seccion2">
@@ -214,9 +215,11 @@ handleEdit(evt){
             {/*IMAGENES*/}
             <p>
               <label className="label" for="imagenes">Imagenes: </label>
-              <input className="input" type="file" name="imagenes" id="imagenes" multiple/>
-              <div style={{marginLeft:'20px'}} className="error"> {this.state.imagenError}</div>
-            </p>
+              <input style={{border:'none'}} className="input" type="file" name="imagenes" id="imagenes" multiple/>
+              <div style={{marginLeft:'20px'}} className="error"> 
+                {this.state.imagenError ? (<i class="fas fa-exclamation-circle"></i>) : null} 
+                {this.state.imagenError}</div>            
+              </p>
 
             <div style={{ height: '40vh', width: '98%', marginLeft:'10px' }}>
               <GoogleMapReact
@@ -244,7 +247,10 @@ handleEdit(evt){
                 <input className="input" type="text" name="lng" id="formLng" autocomplete="off" placeholder={this.state.lng} onClick={this.handleEdit} onBlur={this.handleChange}></input>
               </p>
             </div>
-            <p className="aviso">Procura seleccionar una ubicación en el mapa. de lo contrario el hecho estará por defecto en el centro de Concepción.</p>
+            <p className="aviso">
+              <i class="fas fa-exclamation-triangle"></i>
+              Procura seleccionar una ubicación en el mapa. de lo contrario el hecho se posicionará por defecto en el centro de Concepción.
+            </p>
 
 
           </section>
@@ -266,30 +272,43 @@ handleEdit(evt){
             <p>
               <label className="label" for="title">Título:</label>
               <input className="input" type="text" name="title" id="title" onBlur={this.handleChange}></input>
-              <div className="error"> {this.state.titleError}</div>
+              <div className="error"> 
+                {this.state.titleError ? (<i class="fas fa-exclamation-circle"></i>) : null} 
+                {this.state.titleError}
+              </div>
             </p>
             <p>
               <label className="label" for="description">Descripción:</label>
               <textarea className="textarea" type="text" name="description" id="description" onBlur={this.handleChange}></textarea>
-              <div className="error"> {this.state.descriptionError}</div>
+              <div className="error"> 
+                {this.state.descriptionError ? (<i class="fas fa-exclamation-circle"></i>) : null}
+                {this.state.descriptionError}
+              </div>
 
             </p>
             <div className="LatLong" style={{width:'95%'}}>
               <p>
                 <label className="label" for="year">Año:</label>
                 <input className="input" type="text" name="year" id="year" onBlur={this.handleChange}></input>
-                <div className="error"> {this.state.yearError}</div>
+                <div className="error"> 
+                  {this.state.yearError ? (<i class="fas fa-exclamation-circle"></i>) : null} 
+                  {this.state.yearError}
+                </div>
               </p>
               <p>
                 <label className="label" for="commune">Comuna:</label>
                 <input className="input" type="text" name="commune" id="commune" onBlur={this.handleChange}></input>
-                <div className="error"> {this.state.communeError}</div>
+                <div className="error"> 
+                  {this.state.communeError ? (<i class="fas fa-exclamation-circle"></i>) : null} 
+                  {this.state.communeError}
+                </div>
               </p>
             </div>
             
           </aside>
         </form>     
     </Fragment>
+    </div>
   );
   }  
 }

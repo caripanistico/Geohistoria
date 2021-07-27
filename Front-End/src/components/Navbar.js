@@ -26,6 +26,7 @@ class Navbar extends Component{
                                 <a className={item.cName} onClick={()=>{
                                     this.props.setLat(item.lat);
                                     this.props.setLng(item.lng);
+                                    this.props.setCommune(item.commune);
                                     //console.log(this.props.lat)
                                 }}>
                                     {item.title}

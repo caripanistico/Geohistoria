@@ -13,7 +13,7 @@ import usePlacesAutocomplete, {
 
 import "@reach/combobox/styles.css";
 
-  const libraries = ["places"];
+  //const libraries = ["places"];
 
   function Search({ panTo }) {
     const {

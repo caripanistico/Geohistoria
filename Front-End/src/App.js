@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
-import {Search} from './components/Barrita';
+//import {Search} from './components/Barrita';
 import Navbar from './components/Navbar';
 import Ingreso from './components/Ingreso';
 
@@ -28,7 +28,8 @@ class App extends Component {
       date1: 1900, // valor inicial
       date2: 2000, // valor inicial
       lat: -36.8260421,
-      lng: -73.0330456
+      lng: -73.0330456,
+      commune: 'concepcion'
     }
   }
   
@@ -40,6 +41,15 @@ class App extends Component {
     this.setState({lng:lng})
   }
   
+  setCommune = async (commune) => {
+    this.setState({commune: commune});
+    try{
+      await this.obtener_puntos(commune, this.state.date1, this.state.date2)
+
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   mostrarHecho = hecho => {
     this.setState({hecho: hecho})
@@ -58,7 +68,7 @@ class App extends Component {
       date1: date1,
       date2: date2
     }
-
+    console.log(params);
     // Obtener puntos en el rango
     const response = await axios.get(url_backend.concat('/date-range'), { params: params });
 
@@ -68,12 +78,17 @@ class App extends Component {
       date1: date1,
       date2: date2
     });
+    //console.log(this.state.hechos);
   }
   
   onChange_Dates = async (ranges) => {
-
+    this.setState({
+      date1: ranges.startDate.getFullYear(),
+      date2: ranges.endDate.getFullYear()
+      }
+    )
     try{
-      await this.obtener_puntos('concepcion', ranges.startDate.getFullYear(), ranges.endDate.getFullYear())
+      await this.obtener_puntos(this.state.commune, ranges.startDate.getFullYear(), ranges.endDate.getFullYear())
 
     }catch(error){
       alert("back-end no responde !!") //dev
@@ -90,7 +105,7 @@ class App extends Component {
 
     // Obtener los puntos
     try{
-      await this.obtener_puntos('concepcion', this.state.date1, this.state.date2)
+      await this.obtener_puntos(this.state.commune, this.state.date1, this.state.date2)
 
     }catch(error){
       console.log(error)
@@ -113,8 +128,8 @@ class App extends Component {
         <Route exact path="/" render={() => {
           return (
                   <div id='container'>
-                    <Navbar setLat={this.setLat} setLng={this.setLng} />
-                    <DateRangeFilter onChange={this.onChange_Dates} />
+                    <Navbar setLat={this.setLat} setLng={this.setLng} setCommune={this.setCommune}/>
+                    <DateRangeFilter date1={this.state.date1} date2={this.state.date2} onChange={this.onChange_Dates} />
                     <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho} lat={this.state.lat} lng={this.state.lng} />
                   </div>
           )
