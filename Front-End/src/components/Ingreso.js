@@ -3,12 +3,12 @@ import FormData from 'form-data';
 import GoogleMapReact from 'google-map-react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import swal from 'sweetalert';
+import { URL_BACKEND } from '../static/storage.js';
 
 const axios = require('axios').default;
-const url_backend = 'http://localhost:5000/'
 
 //restablecer error
-const initialState ={
+const initialState = {
   titleError: "",
   descriptionError: "",
   yearError: "",
@@ -17,13 +17,6 @@ const initialState ={
   hayfotos: false
 }
 
-// const getFormJSON = (form) => {
-//   const data = new FormData(form);
-//   return Array.from(data.keys()).reduce((result, key) => {
-//     result[key] = data.get(key);
-//     return result;
-//   }, {});
-// };
 
 class Ingreso extends Component {
   pin;
@@ -114,7 +107,7 @@ class Ingreso extends Component {
     }
 
     // 1. Enviar imagenes del punto
-    let response = await axios.post(url_backend + 'add-image', imagenes_data,
+    let response = await axios.post(URL_BACKEND + 'add-image', imagenes_data,
       {headers:{'Content-Type':'multipart/form-data'}});
 
     // *** construir formdata para datos punto
@@ -128,7 +121,7 @@ class Ingreso extends Component {
     form_data.append('imagenes', imagenes_names)
 
     // 2. Enviar data del punto
-    response = await axios.post(url_backend + 'add-point', form_data)
+    response = await axios.post(URL_BACKEND + 'add-point', form_data)
     console.log(response)
   }
 
@@ -312,4 +305,5 @@ handleEdit(evt){
   );
   }  
 }
+
 export default Ingreso;

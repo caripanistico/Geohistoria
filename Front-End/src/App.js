@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { URL_BACKEND } from './static/storage.js';
 
 //Components:
-//import Botones from './components/Botones';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
-//import {Search} from './components/Barrita';
 import Navbar from './components/Navbar';
 import Ingreso from './components/Ingreso';
 
@@ -15,7 +14,6 @@ import './components/styles/styles.css'
 
 // importing axios
 const axios = require('axios').default;
-const url_backend = 'http://localhost:5000'
 
 class App extends Component {
   constructor(props) {
@@ -70,7 +68,7 @@ class App extends Component {
     }
     console.log(params);
     // Obtener puntos en el rango
-    const response = await axios.get(url_backend.concat('/date-range'), { params: params });
+    const response = await axios.get(URL_BACKEND.concat('/date-range'), { params: params });
 
     // Cargar nuevos puntos y fechas
     this.setState({
