@@ -5,15 +5,15 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { DateRangePicker } from 'react-date-range';
 
-import { addDays, subDays } from 'date-fns';
+//import { addDays, subDays } from 'date-fns';
 import { useState } from 'react';
 
 
-const DateRangeFilter = ({ onChange }) => {
+const DateRangeFilter = ({ onChange, date1, date2 }) => {
     const [state, setState] = useState([
       {
-        startDate: new Date(1900,0,1),
-        endDate: new Date(2000,11,31),
+        startDate: new Date(date1,0,1),
+        endDate: new Date(date2,11,31),
         key: "selection"
       }
     ]);

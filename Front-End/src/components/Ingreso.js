@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import FormData from 'form-data';
 import GoogleMapReact from 'google-map-react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Route, Link} from 'react-router-dom';
 import swal from 'sweetalert';
 
 const axios = require('axios').default;

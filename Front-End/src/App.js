@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Mapa from './components/Mapa';
 import Info from './components/Info';
 import DateRangeFilter from './components/DateRangeFilter';
-import {Search} from './components/Barrita';
+//import {Search} from './components/Barrita';
 import Navbar from './components/Navbar';
 import Ingreso from './components/Ingreso';
 
@@ -82,7 +82,11 @@ class App extends Component {
   }
   
   onChange_Dates = async (ranges) => {
-
+    this.setState({
+      date1: ranges.startDate.getFullYear(),
+      date2: ranges.endDate.getFullYear()
+      }
+    )
     try{
       await this.obtener_puntos(this.state.commune, ranges.startDate.getFullYear(), ranges.endDate.getFullYear())
 
@@ -125,7 +129,7 @@ class App extends Component {
           return (
                   <div id='container'>
                     <Navbar setLat={this.setLat} setLng={this.setLng} setCommune={this.setCommune}/>
-                    <DateRangeFilter onChange={this.onChange_Dates} />
+                    <DateRangeFilter date1={this.state.date1} date2={this.state.date2} onChange={this.onChange_Dates} />
                     <Mapa id='google_map' hechos = {this.state.hechos} mostrarHecho={this.mostrarHecho} lat={this.state.lat} lng={this.state.lng} />
                   </div>
           )
