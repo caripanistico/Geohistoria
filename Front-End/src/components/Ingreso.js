@@ -249,7 +249,7 @@ handleEdit(evt){
             </div>
             <p className="aviso">
               <i class="fas fa-exclamation-triangle"></i>
-              Procura seleccionar una ubicación en el mapa. de lo contrario el hecho estará por defecto en el centro de Concepción.
+              Procura seleccionar una ubicación en el mapa. de lo contrario el hecho se posicionará por defecto en el centro de Concepción.
             </p>
 
 
