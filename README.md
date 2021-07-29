@@ -28,4 +28,4 @@ GUIA INSTALACION PARA LINUX: https://linuxize.com/post/how-to-install-node-js-on
 	2. Correr el comando: npm install
 	3. Correr el comando: npm start
 
-Esto deberia abrir el navegador y mostrar el Home de la app :blush: !.
+#### Esto deberia abrir el navegador y mostrar el Home de la app :blush:!
