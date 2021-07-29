@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/GeoHistoria/static/css/main.d29f7472.chunk.css",
-    "main.js": "/GeoHistoria/static/js/main.8d5ba13c.chunk.js",
-    "main.js.map": "/GeoHistoria/static/js/main.8d5ba13c.chunk.js.map",
+    "main.css": "/GeoHistoria/static/css/main.77c1137a.chunk.css",
+    "main.js": "/GeoHistoria/static/js/main.9ff3d888.chunk.js",
+    "main.js.map": "/GeoHistoria/static/js/main.9ff3d888.chunk.js.map",
     "runtime-main.js": "/GeoHistoria/static/js/runtime-main.6c7f5630.js",
     "runtime-main.js.map": "/GeoHistoria/static/js/runtime-main.6c7f5630.js.map",
     "static/css/2.c2e18bb2.chunk.css": "/GeoHistoria/static/css/2.c2e18bb2.chunk.css",
-    "static/js/2.90875bf1.chunk.js": "/GeoHistoria/static/js/2.90875bf1.chunk.js",
-    "static/js/2.90875bf1.chunk.js.map": "/GeoHistoria/static/js/2.90875bf1.chunk.js.map",
+    "static/js/2.ec0e08eb.chunk.js": "/GeoHistoria/static/js/2.ec0e08eb.chunk.js",
+    "static/js/2.ec0e08eb.chunk.js.map": "/GeoHistoria/static/js/2.ec0e08eb.chunk.js.map",
     "index.html": "/GeoHistoria/index.html",
     "static/css/2.c2e18bb2.chunk.css.map": "/GeoHistoria/static/css/2.c2e18bb2.chunk.css.map",
-    "static/css/main.d29f7472.chunk.css.map": "/GeoHistoria/static/css/main.d29f7472.chunk.css.map",
-    "static/js/2.90875bf1.chunk.js.LICENSE.txt": "/GeoHistoria/static/js/2.90875bf1.chunk.js.LICENSE.txt"
+    "static/css/main.77c1137a.chunk.css.map": "/GeoHistoria/static/css/main.77c1137a.chunk.css.map",
+    "static/js/2.ec0e08eb.chunk.js.LICENSE.txt": "/GeoHistoria/static/js/2.ec0e08eb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6c7f5630.js",
     "static/css/2.c2e18bb2.chunk.css",
-    "static/js/2.90875bf1.chunk.js",
-    "static/css/main.d29f7472.chunk.css",
-    "static/js/main.8d5ba13c.chunk.js"
+    "static/js/2.ec0e08eb.chunk.js",
+    "static/css/main.77c1137a.chunk.css",
+    "static/js/main.9ff3d888.chunk.js"
   ]
 }
