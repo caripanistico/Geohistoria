@@ -2,7 +2,6 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://diego-caripan.github.io/GeoHistoria",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@reach/combobox": "^0.10.2",
